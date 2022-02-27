@@ -37,7 +37,7 @@ Already added to the plugin list.
 ### Usage
 | key binding | function | description |
 | -- | -- | -- | 
-| <leader>n | NERDTreeFocus | |
+| \<leader\>n | NERDTreeFocus | |
 | ctrl-t | NERDTreeToggle | |
 | ctrl-f | NERDTreeFind | focus the location of current buffer of the tree |
 
@@ -48,9 +48,9 @@ Already added to the plugin list.
 
 | key binding | function | description |
 | -- | -- | -- | 
-| <leader>cc | comment | |
-| <leader>cn | nested comment | |
-| <leader>c<space> | toggle comment | |
+| \<leader\>cc | comment | |
+| \<leader\>cn | nested comment | |
+| \<leader\>c<space> | toggle comment | |
 
 for other key bindings see [nerdcommenter.vim](./vimrc/nerdcommenter.vim).
 
