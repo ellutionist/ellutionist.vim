@@ -3,7 +3,7 @@
 -- table.insert(runtime_path, "lua/?/init.lua")
 
 require'lspconfig'.sumneko_lua.setup {
-  cmd = { "/opt/lua-language-server/bin/lua-language-server" },
+  cmd = { "lua-language-server" },
   settings = {
     Lua = {
       filetypes = { "lua" },

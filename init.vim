@@ -7,4 +7,5 @@ source $NVIM_HOME/vimrc/fzf.vim
 
 luafile $NVIM_HOME/vimrc/lspfuzzy.lua
 luafile $NVIM_HOME/vimrc/lspconfig-sumneko.lua
+luafile $NVIM_HOME/vimrc/lspconfig-clangd.lua
 
