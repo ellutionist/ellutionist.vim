@@ -1,6 +1,6 @@
 local packer_bootstrap = (require "plugins.helper").ensure_packer()
 
-return require('packer').startup(function(use)
+require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
 
@@ -14,3 +14,5 @@ return require('packer').startup(function(use)
         require('packer').sync()
     end
 end)
+
+return packer_bootstrap
