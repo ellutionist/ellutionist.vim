@@ -16,12 +16,13 @@ return {
     },
     github = {
         'tpope/vim-fugitive',
+        'lewis6991/gitsigns.nvim',
     },
     fzf = {
         {
             'nvim-telescope/telescope.nvim',
-            -- tag = '0.1.1',
-            branch = "master",
+            tag = '0.1.1',
+            -- branch = "master",
             -- or                            , branch = '0.1.x',
             requires = { { 'nvim-lua/plenary.nvim' } }
         }
