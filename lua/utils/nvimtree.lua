@@ -59,6 +59,7 @@ local function on_attach(bufnr)
     vim.keymap.set('n', 'O',     api.node.open.no_window_picker,        opts('Open: No Window Picker'))
     vim.keymap.set('n', 'p',     api.node.navigate.parent,              opts('Parent Directory'))
     vim.keymap.set('n', 'q',     api.tree.close,                        opts('Close'))
+    vim.keymap.set('n', '<c-c>',     api.tree.close,                        opts('Close'))
     vim.keymap.set('n', 'mm',     api.fs.rename,                         opts('Rename'))
     vim.keymap.set('n', 'R',     api.tree.reload,                       opts('Refresh'))
     -- vim.keymap.set('n', 's',     api.node.run.system,                   opts('Run System'))
@@ -150,12 +151,12 @@ require("nvim-tree").setup({
 require 'nvim-tree.view'.View.winopts.relativenumber = true
 
 local keymap = require "helper.keymap"
-local Normal = keymap.Normal
-local leader = keymap.keys.leader
+local leader_and_space = keymap.leader_and_space
 local cmd = keymap.values.cmd
 
-Normal(leader "to", cmd "NvimTreeOpen")
-Normal(leader "tc", cmd "NvimTreeClose")
-Normal(leader "tn", cmd "NvimTreeFocus")
-Normal(leader "tF", cmd "NvimTreeFocus")
-Normal(leader "tf", cmd "NvimTreeFindFileToggle")
+leader_and_space("to", cmd "NvimTreeOpen")
+leader_and_space("tc", cmd "NvimTreeClose")
+leader_and_space("tn", cmd "NvimTreeFocus")
+leader_and_space("tF", cmd "NvimTreeFocus")
+leader_and_space("tf", cmd "NvimTreeFindFileToggle")
+

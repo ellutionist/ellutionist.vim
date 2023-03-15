@@ -8,7 +8,7 @@ _M.modes = {
     insert = "i",
 }
 
-function _M.Normal(...)
+function _M.normal(...)
     vim.keymap.set(_M.modes.normal, ...)
 end
 
@@ -19,10 +19,19 @@ _M.keys = {
     leader = function(k)
         return string.format("<leader>%s", k)
     end,
+    space = function(k)
+        return string.format("<space>%s", k)
+    end,
     combine = function(...)
         return table.concat({ ... }, " ")
     end
 }
+
+function _M.leader_and_space(key, ...)
+    vim.keymap.set(_M.modes.normal, _M.keys.leader(key), ...)
+    vim.keymap.set(_M.modes.normal, _M.keys.space(key), ...)
+end
+
 
 _M.values = {
     cmd = function(val)

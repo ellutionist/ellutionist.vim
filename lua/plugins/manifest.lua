@@ -13,6 +13,7 @@ return {
             'nvim-lualine/lualine.nvim',
             requires = { 'kyazdani42/nvim-web-devicons', opt = true }
         },
+        {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'},
     },
     github = {
         'tpope/vim-fugitive',

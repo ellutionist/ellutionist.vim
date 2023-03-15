@@ -1,3 +1,5 @@
+local leader_space = require "helper.keymap".leader_and_space
+
 local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -16,11 +18,13 @@ local on_attach = function(client, bufnr)
     --[[     print(vim.inspect(vim.lsp.buf.list_workspace_folders())) ]]
     --[[ end, bufopts) ]]
     --[[ vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts) ]]
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+    -- vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
+    leader_space("rn", vim.lsp.buf.rename, bufopts)
     --[[ vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts) ]]
     vim.keymap.set('n', 'gr', "<cmd>Telescope lsp_references<cr>")
     vim.keymap.set('n', 'gd', "<cmd>Telescope lsp_definitions<cr>")
-    vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+    -- vim.keymap.set('n', '<leader>F', function() vim.lsp.buf.format { async = true } end, bufopts)
+    leader_space('F', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
 local flags = {

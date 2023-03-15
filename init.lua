@@ -1,12 +1,11 @@
 require "base"
 
-local bootstrap = require "plugins"
+local bootstraped = require "plugins"
 
-if bootstrap then
+if bootstraped then
     return
 end
 
 require "utils"
 require "colors"
 require "lsp"
-

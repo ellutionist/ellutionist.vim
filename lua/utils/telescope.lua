@@ -1,21 +1,19 @@
 local keymap = require "helper.keymap"
-local Normal = keymap.Normal
-local leader = keymap.keys.leader
+local leader_space = keymap.leader_and_space
 local cmd = keymap.values.cmd
 
-Normal(leader "TT", cmd "Telescope")
-Normal(leader "Tg", cmd "Telescope live_grep")
-Normal(leader "Tf", cmd "Telescope find_files")
-Normal(leader "Td", cmd "Telescope diagnostics")
+leader_space("TT", cmd "Telescope")
+leader_space("Tg", cmd "Telescope live_grep")
+leader_space("Tf", cmd "Telescope find_files")
+leader_space("Td", cmd "Telescope diagnostics")
 
 require('telescope').setup({
-  defaults = {
-    layout_config = {
-      vertical = { width = 0.8 }
-      -- other layout configuration here
+    defaults = {
+        layout_config = {
+            vertical = { width = 0.8 }
+            -- other layout configuration here
+        },
+        -- other defaults configuration here
     },
-    -- other defaults configuration here
-  },
-  -- other configuration values here
+    -- other configuration values here
 })
-

@@ -20,10 +20,9 @@ require("symbols-outline").setup {
 }
 
 local keymap = require "helper.keymap"
-local Normal = keymap.Normal
-local leader = keymap.keys.leader
+local leader_space = keymap.leader_and_space
 local cmd = keymap.values.cmd
 
-Normal(leader "SS", cmd "SymbolsOutline")
-Normal(leader "So", cmd "SymbolsOutlineOpen")
-Normal(leader "Sc", cmd "SymbolsOutlineClose")
+leader_space("SS", cmd "SymbolsOutline")
+leader_space("So", cmd "SymbolsOutlineOpen")
+leader_space("Sc", cmd "SymbolsOutlineClose")
