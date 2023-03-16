@@ -1,11 +1,6 @@
 require "base"
-
-local bootstraped = require "plugins"
-
-if bootstraped then
-    return
-end
-
-require "utils"
+require "plugins"
 require "colors"
-require "lsp"
+
+pcall(function()
+end)
