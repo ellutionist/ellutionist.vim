@@ -2,7 +2,7 @@ return function()
     require("dashboard").setup({
         theme = 'hyper',
         preview = {
-            command = 'cat | lolcat -F 0.3',
+            command = 'cat | lolcat -F 0.3 2>/dev/null',
             file_path = vim.env.HOME .. '/.config/nvim/static/neovim.cat',
             file_height = 11,
             file_width = 86,
