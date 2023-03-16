@@ -1,47 +1,34 @@
 return function()
-    require("dashboard").setup({
-        theme = 'hyper',
-        preview = {
-            command = 'cat | lolcat -F 0.3 2>/dev/null',
-            file_path = vim.env.HOME .. '/.config/nvim/static/neovim.cat',
-            file_height = 11,
-            file_width = 86,
-        },
-        config = {
-            -- header = {
-            --     [[███████╗██╗     ██╗     ██╗   ██╗████████╗██╗ ██████╗ ███╗   ██╗██╗███████╗████████╗]],
-            --     [[██╔════╝██║     ██║     ██║   ██║╚══██╔══╝██║██╔═══██╗████╗  ██║██║██╔════╝╚══██╔══╝]],
-            --     [[█████╗  ██║     ██║     ██║   ██║   ██║   ██║██║   ██║██╔██╗ ██║██║███████╗   ██║   ]],
-            --     [[██╔══╝  ██║     ██║     ██║   ██║   ██║   ██║██║   ██║██║╚██╗██║██║╚════██║   ██║   ]],
-            --     [[███████╗███████╗███████╗╚██████╔╝   ██║   ██║╚██████╔╝██║ ╚████║██║███████║   ██║   ]],
-            --     [[╚══════╝╚══════╝╚══════╝ ╚═════╝    ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝╚══════╝   ╚═╝   ]],
-            -- },
-            -- week_header = {
-            --     enable = true,
-            -- },
-            shortcut = {
-                {
-                    icon = ' ',
-                    icon_hl = '@variable',
-                    desc = 'Files',
-                    group = 'Label',
-                    action = 'Telescope find_files',
-                    key = 'f',
-                },
-                -- {
-                --     desc = ' Apps',
-                --     group = 'DiagnosticHint',
-                --     action = 'Telescope app',
-                --     key = 'a',
-                -- },
-                -- {
-                --     desc = ' dotfiles',
-                --     group = 'Number',
-                --     action = 'Telescope dotfiles',
-                --     key = 'd',
-                -- },
-            },
-        },
-    })
-    -- vim.g.dashboard_preview_pipeline = 'lolcat'
+    -- require 'alpha'.setup(require 'alpha.themes.startify'.config)
+    local alpha = require 'alpha'
+    local startify = require 'alpha.themes.startify'
+    startify.section.header.val = {
+        [[███████╗██╗     ██╗     ██╗   ██╗████████╗██╗ ██████╗ ███╗   ██╗██╗███████╗████████╗]],
+        [[██╔════╝██║     ██║     ██║   ██║╚══██╔══╝██║██╔═══██╗████╗  ██║██║██╔════╝╚══██╔══╝]],
+        [[█████╗  ██║     ██║     ██║   ██║   ██║   ██║██║   ██║██╔██╗ ██║██║███████╗   ██║   ]],
+        [[██╔══╝  ██║     ██║     ██║   ██║   ██║   ██║██║   ██║██║╚██╗██║██║╚════██║   ██║   ]],
+        [[███████╗███████╗███████╗╚██████╔╝   ██║   ██║╚██████╔╝██║ ╚████║██║███████║   ██║   ]],
+        [[╚══════╝╚══════╝╚══════╝ ╚═════╝    ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝╚══════╝   ╚═╝   ]],
+    }
+    startify.section.top_buttons.val = {
+        startify.button("f", "Find Files", ":Telescope find_files<CR>"),
+    }
+    -- disable MRU
+    -- startify.section.mru.val = { { type = "padding", val = 0 } }
+    -- disable MRU cwd
+    startify.section.mru_cwd.val = { { type = "padding", val = 0 } }
+    -- disable nvim_web_devicons
+    -- startify.nvim_web_devicons.enabled = false
+    -- startify.nvim_web_devicons.highlight = false
+    -- startify.nvim_web_devicons.highlight = 'Keyword'
+    --
+    startify.section.bottom_buttons.val = {
+        startify.button("q", "Quit NVIM", ":qa<CR>"),
+    }
+    startify.section.footer.val = {
+        { type = "text", val = "Holy Syntax" },
+    }
+    -- ignore filetypes in MRU
+
+    alpha.setup(startify.config)
 end

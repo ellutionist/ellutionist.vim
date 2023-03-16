@@ -34,11 +34,10 @@ return {
             requires = { { 'nvim-lua/plenary.nvim' } }
         },
         {
-            'glepnir/dashboard-nvim',
-            event = 'VimEnter',
-            config = require "utils.dashboard-setup",
-            requires = { 'nvim-tree/nvim-web-devicons' }
-        }
+            'goolord/alpha-nvim',
+            requires = { 'nvim-tree/nvim-web-devicons' },
+            config = require "utils.dashboard-setup"
+        },
     },
     github = {
         'tpope/vim-fugitive',
