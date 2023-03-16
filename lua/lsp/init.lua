@@ -3,5 +3,5 @@ return function()
     require "lsp.bash-ls" ()
     require "lsp.clangd-ls" ()
     require "lsp.json-ls" ()
-    require 'lspconfig'.pyright.setup {}
+    require "lsp.pyright-lsp" ()
 end
