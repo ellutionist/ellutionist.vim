@@ -15,4 +15,6 @@ require('packer').startup(function(use)
     end
 end)
 
+require "plugins.packer-init"
+
 return packer_bootstrap

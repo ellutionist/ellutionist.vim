@@ -107,6 +107,7 @@ return function()
     ls("bP", cmd "BufferMovePrevious")
     ls("bI", cmd "BufferPin")
     ls("bc", cmd "BufferClose")
+    ls("bq", cmd "BufferCloseAllButCurrentOrPinned")
 
     ls("b1", cmd "BufferGoto 1")
     ls("b2", cmd "BufferGoto 2")

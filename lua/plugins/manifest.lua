@@ -81,5 +81,10 @@ return {
                 }
             end
         },
+        {
+            "jose-elias-alvarez/null-ls.nvim",
+            config = require "lsp.null-ls-init",
+            requires = { { 'nvim-lua/plenary.nvim' } }
+        }
     }
 }
