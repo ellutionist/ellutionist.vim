@@ -14,9 +14,9 @@ return function()
         startify.button("f", "Find Files", ":Telescope find_files<CR>"),
     }
     -- disable MRU
-    -- startify.section.mru.val = { { type = "padding", val = 0 } }
+    startify.section.mru.val = { { type = "padding", val = 0 } }
     -- disable MRU cwd
-    startify.section.mru_cwd.val = { { type = "padding", val = 0 } }
+    -- startify.section.mru_cwd.val = { { type = "padding", val = 0 } }
     -- disable nvim_web_devicons
     -- startify.nvim_web_devicons.enabled = false
     -- startify.nvim_web_devicons.highlight = false
