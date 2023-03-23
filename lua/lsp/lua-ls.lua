@@ -1,10 +1,10 @@
 local common = require "lsp.common"
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-capabilities.textDocument.formatting = false
-capabilities.textDocument.rangeFormatting = false
-capabilities.textDocument.range_formatting = false
+-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+--
+-- capabilities.textDocument.formatting = false
+-- capabilities.textDocument.rangeFormatting = false
+-- capabilities.textDocument.range_formatting = false
 
 require("lspconfig").lua_ls.setup {
     on_attach = common.on_attach,
@@ -12,7 +12,7 @@ require("lspconfig").lua_ls.setup {
 
     -- cmd = { "/root/opt/lua-ls/bin/lua-language-server" },
     cmd = { "lua-language-server" },
-    capabilities = capabilities,
+    -- capabilities = capabilities,
 
     settings = {
         Lua = {

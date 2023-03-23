@@ -5,7 +5,7 @@ require("lspconfig").clangd.setup {
     on_attach = common.on_attach,
     flags = common.flags,
 
-    capabilities = capabilities,
+    -- capabilities = capabilities,
     cmd = {
         "clangd",
         "--query-driver=/usr/bin/g++",

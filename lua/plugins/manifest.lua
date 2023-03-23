@@ -38,14 +38,20 @@ return {
             requires = { "nvim-tree/nvim-web-devicons" },
             config = require "utils.dashboard-setup",
         },
+        {
+            "RRethy/vim-illuminate",
+            -- requires = { "nvim-tree/nvim-web-devicons" },
+            config = require "utils.illuminate-setup",
+        },
+        {
+            "github/copilot.vim",
+        },
     },
     github = {
         "tpope/vim-fugitive",
         {
             "lewis6991/gitsigns.nvim",
-            config = function()
-                require("gitsigns").setup()
-            end,
+            config = require "utils.gitsigns-setup",
         },
     },
     lsp = {
