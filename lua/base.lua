@@ -7,12 +7,14 @@ vim.o.ts = 2
 vim.o.autoindent = true
 vim.o.mouse = false
 
--- vim.cmd("set cursorline")
--- vim.cmd("au VimEnter * hi clear CursorLine")
--- vim.cmd("autocmd VimEnter * hi CursorLine gui=reverse cterm=reverse")
+vim.cmd "set cursorline"
+vim.cmd "hi cursorline cterm=none term=none"
+vim.cmd "autocmd WinEnter * setlocal cursorline"
+vim.cmd "highlight CursorLine guibg=#303000 ctermbg=234"
 
 vim.cmd("autocmd Filetype cpp setlocal expandtab tabstop=2 shiftwidth=2")
 vim.cmd("autocmd FileType c,cpp setlocal foldmethod=syntax")
+vim.cmd("autocmd FileType c,cpp norm zR")
 
 vim.cmd("filetype plugin indent on")
 vim.cmd("set tabstop=4")

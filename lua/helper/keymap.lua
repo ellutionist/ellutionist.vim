@@ -24,7 +24,7 @@ _M.keys = {
     end,
     combine = function(...)
         return table.concat({ ... }, " ")
-    end
+    end,
 }
 
 function _M.leader_and_space(key, ...)
@@ -32,11 +32,10 @@ function _M.leader_and_space(key, ...)
     vim.keymap.set(_M.modes.normal, _M.keys.space(key), ...)
 end
 
-
 _M.values = {
     cmd = function(val)
         return string.format("<cmd>%s<cr>", val)
-    end
+    end,
 }
 
 return _M
