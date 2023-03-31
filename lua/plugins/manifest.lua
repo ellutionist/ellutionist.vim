@@ -24,6 +24,7 @@ return {
             "romgrk/barbar.nvim",
             config = require "utils.bufferline-setup",
             requires = "nvim-web-devicons",
+            tag = "v1.5.0"
         },
         {
             "nvim-telescope/telescope.nvim",
