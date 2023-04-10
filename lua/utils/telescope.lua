@@ -7,6 +7,7 @@ return function()
     leader_space("Tg", cmd "Telescope live_grep")
     leader_space("Tf", cmd "Telescope find_files")
     leader_space("Td", cmd "Telescope diagnostics")
+    leader_space("Tc", cmd "Telescope colorscheme")
 
     require('telescope').setup({
         defaults = {
