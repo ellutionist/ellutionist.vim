@@ -47,6 +47,6 @@ return function()
 		min_count_to_highlight = 1,
 	}
     -- vim.cmd("hi def IlluminatedWordText guibg=#303000 ctermbg=234")
-    -- vim.cmd("hi def IlluminatedWordRead guibg=#303000 ctermbg=234")
-    -- vim.cmd("hi def IlluminatedWordWrite guibg=#303000 ctermbg=234")
+    vim.cmd("hi def IlluminatedWordRead guibg=#454500 ctermbg=234")
+    vim.cmd("hi def IlluminatedWordWrite guibg=#454500 ctermbg=234")
 end
