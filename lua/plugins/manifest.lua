@@ -49,7 +49,10 @@ return {
         },
     },
     github = {
-        "tpope/vim-fugitive",
+        {
+            "tpope/vim-fugitive",
+            config = require "utils.git-fugitive-setup",
+        },
         {
             "lewis6991/gitsigns.nvim",
             config = require "utils.gitsigns-setup",
@@ -111,7 +114,7 @@ return {
     },
     golang = {
         {
-            "ray-x/go.nvim"
+            'ray-x/go.nvim'
         }
     }
 }
