@@ -20,6 +20,10 @@ local on_attach = function(client, bufnr)
     --[[ vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts) ]]
     -- vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
     leader_space("rn", vim.lsp.buf.rename, bufopts)
+    leader_space("lrn", vim.lsp.buf.rename, bufopts)
+    leader_space("ldn", vim.diagnostic.goto_next, bufopts)
+    leader_space("ldp", vim.diagnostic.goto_prev, bufopts)
+    leader_space("lca", vim.lsp.buf.code_action, bufopts)
     --[[ vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts) ]]
     vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<cr>")
     vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>")

@@ -109,4 +109,9 @@ return {
             },
         },
     },
+    golang = {
+        {
+            "ray-x/go.nvim"
+        }
+    }
 }
