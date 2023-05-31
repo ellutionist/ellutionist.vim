@@ -167,7 +167,7 @@ local function show_all_groups_intro()
     display(aligned_lines)
 end
 
-function _M.bin_all_groups_intro()
+function _M.bind_all_groups_intro()
     bind("??", show_all_groups_intro)
 end
 
