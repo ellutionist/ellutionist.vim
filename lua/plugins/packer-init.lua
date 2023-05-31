@@ -1,6 +1,6 @@
-local ls = require "helper.keymap".leader_and_space
-local cmd = require "helper.keymap".values.cmd
+local keymap_grp = require "mykeymaps.group"
 
-ls("ps", cmd "PackerSync")
-ls("pc", cmd "PackerCompile")
-
+keymap_grp.new("Packer", "p")
+    :add_entry("Sync", "s", "Sync plugins", "PackerSync")
+    :add_entry("Compile", "c", "Compile plugins", "PackerCompile")
+    :bind()

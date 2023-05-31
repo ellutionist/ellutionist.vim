@@ -20,11 +20,9 @@ return function()
 
     }
 
-    local keymap = require "helper.keymap"
-    local leader_space = keymap.leader_and_space
-    local cmd = keymap.values.cmd
-
-    leader_space("SS", cmd "SymbolsOutline")
-    leader_space("So", cmd "SymbolsOutlineOpen")
-    leader_space("Sc", cmd "SymbolsOutlineClose")
+    require "mykeymaps.group".new_or_get("Symbols", "S")
+        :add_entry("Toggle", "S", "Toggle symbols outline", "SymbolsOutline")
+        :add_entry("Open", "o", "Open symbols outline", "SymbolsOutlineOpen")
+        :add_entry("Close", "c", "Close symbols outline", "SymbolsOutlineClose")
+        :bind()
 end

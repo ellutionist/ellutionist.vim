@@ -25,20 +25,6 @@ end
 
 vim.o.background = background
 
-local keymap = require "helper.keymap"
-local ls = keymap.leader_and_space
-
--- local function color_toggle_background()
---     local current = vim.inspect(vim.o.background)
---     print(current)
---     if current == "dark" then
---         vim.cmd("set background=light")
---     else
---         vim.cmd("set background=dark")
---         -- vim.o.background = "dark"
---     end
--- end
-
 local function color_random()
     local colors_map = get_colors()
     local color_names = {}
@@ -53,8 +39,13 @@ local function color_random()
     vim.cmd("colorscheme " .. choose)
 end
 
-ls("cb", "<cmd>:let &bg=(&bg=='light'?'dark':'light')<cr>")
-ls("cr", color_random)
+require "mykeymaps.group".new_or_get("Color", "c")
+    :add_entry("ToggleBackground", "b", "Toggle background", "let &bg=(&bg=='light'?'dark':'light')")
+    :add_entry("Random", "r", "Random color", color_random)
+    :bind()
+
+-- ls("cb", "<cmd>:let &bg=(&bg=='light'?'dark':'light')<cr>")
+-- ls("cr", color_random)
 
 return {
     colorscheme = colorscheme,

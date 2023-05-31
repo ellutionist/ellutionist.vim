@@ -6,6 +6,7 @@ local common = require "lsp.common"
 -- capabilities.textDocument.rangeFormatting = false
 -- capabilities.textDocument.range_formatting = false
 
+require("neodev").setup({})
 require("lspconfig").lua_ls.setup {
     on_attach = common.on_attach,
     flags = common.flags,

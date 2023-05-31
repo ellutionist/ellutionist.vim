@@ -178,13 +178,13 @@ return function()
 
     require("nvim-tree.view").View.winopts.relativenumber = true
 
-    local keymap = require "helper.keymap"
-    local leader_and_space = keymap.leader_and_space
-    local cmd = keymap.values.cmd
+    local keymap_grp = require "mykeymaps.group"
 
-    leader_and_space("to", cmd "NvimTreeOpen")
-    leader_and_space("tc", cmd "NvimTreeClose")
-    leader_and_space("tn", cmd "NvimTreeFocus")
-    leader_and_space("tF", cmd "NvimTreeFocus")
-    leader_and_space("tf", cmd "NvimTreeFindFileToggle")
+    keymap_grp.new("FileExplorer", "e")
+        :add_entry("Open", "o", "Open Explorer", "NvimTreeOpen")
+        :add_entry("Close", "c", "Close Explorer", "NvimTreeClose")
+        :add_entry("Focus", "n", "Focus Explorer", "NvimTreeFocus", { "F" })
+        :add_entry("FindFileToggle", "f", "Toggle Find File in Nvim Tree",
+            "NvimTreeFindFileToggle")
+        :bind()
 end

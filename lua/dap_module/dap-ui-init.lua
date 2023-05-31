@@ -93,13 +93,21 @@ local function dapui_float_stack()
     })
 end
 
-local keymap = require "helper.keymap"
-local ls = keymap.leader_and_space
+local keymap_grp = require "mykeymaps.group"
 
-ls("du", require("dapui").toggle)
-ls("ds", dapui_float_stack)
-ls("dH", require("dap.ui.widgets").hover)
-ls("d?", function()
-    local widgets = require "dap.ui.widgets"
-    widgets.centered_float(widgets.scopes)
-end)
+-- ls("du", require("dapui").toggle)
+-- ls("ds", dapui_float_stack)
+-- ls("dH", require("dap.ui.widgets").hover)
+-- ls("d?", function()
+--     local widgets = require "dap.ui.widgets"
+--     widgets.centered_float(widgets.scopes)
+-- end)
+keymap_grp.new_or_get("Debug", "d")
+    :add_entry("ToggleUI", "u", "Toggle UI", require("dapui").toggle)
+    :add_entry("FloatStack", "s", "Float Stack", dapui_float_stack)
+    :add_entry("Hover", "H", "Hover", require("dap.ui.widgets").hover)
+    :add_entry("Scopes", "v", "Scopes", function()
+        local widgets = require "dap.ui.widgets"
+        widgets.centered_float(widgets.scopes)
+    end, { "S" })
+    :bind()

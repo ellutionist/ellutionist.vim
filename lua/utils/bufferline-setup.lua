@@ -96,44 +96,27 @@ return function()
         no_name_title = nil,
     }
 
-    local keymap = require "helper.keymap"
-    local ls = keymap.leader_and_space
-    local cmd = keymap.values.cmd
+    local keymap_grp = require "mykeymaps.group"
 
-    ls("bb", cmd "BufferPick")
-    ls("bn", cmd "BufferNext")
-    ls("bp", cmd "BufferPrevious")
-    ls("bd", cmd "BufferDelete")
-    ls("bN", cmd "BufferMoveNext")
-    ls("bP", cmd "BufferMovePrevious")
-    ls("bI", cmd "BufferPin")
-    ls("bc", cmd "BufferClose")
-    ls("bq", cmd "BufferCloseAllButCurrentOrPinned")
-
-    ls("b1", cmd "BufferGoto 1")
-    ls("b2", cmd "BufferGoto 2")
-    ls("b3", cmd "BufferGoto 3")
-    ls("b4", cmd "BufferGoto 4")
-    ls("b5", cmd "BufferGoto 5")
-    ls("b6", cmd "BufferGoto 6")
-    ls("b7", cmd "BufferGoto 7")
-    ls("b8", cmd "BufferGoto 8")
-    ls("b9", cmd "BufferGoto 9")
-
-    -- -- Wipeout buffer
-    -- --                 :BufferWipeout
-    -- -- Close commands
-    -- --                 :BufferCloseAllButCurrent
-    -- --                 :BufferCloseAllButPinned
-    -- --                 :BufferCloseAllButCurrentOrPinned
-    -- --                 :BufferCloseBuffersLeft
-    -- --                 :BufferCloseBuffersRight
-    -- -- Magic buffer-picking mode
-    -- map('n', '<C-p>', '<Cmd>BufferPick<CR>', opts)
-    -- -- Sort automatically by...
-    -- map('n', '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', opts)
-    -- map('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', opts)
-    -- map('n', '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', opts)
-    -- map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
-    --
+    keymap_grp.new("Buffer", "b")
+        :add_entry("PickBuffer", "b", "Pick buffer", "BufferPick")
+        :add_entry("NextBuffer", "n", "Next buffer", "BufferNext")
+        :add_entry("PreviousBuffer", "p", "Previous buffer", "BufferPrevious")
+        :add_entry("DeleteBuffer", "d", "Delete buffer", "BufferDelete")
+        :add_entry("MoveBufferNext", "N", "Move next buffer", "BufferMoveNext")
+        :add_entry("MoveBufferPrevious", "P", "Move previous buffer", "BufferMovePrevious")
+        :add_entry("PinBuffer", "I", "Pin buffer", "BufferPin")
+        :add_entry("CloseBuffer", "c", "Close buffer", "BufferClose")
+        :add_entry("CloseAllButCurrentOrPinned", "q", "Close all but current or pinned",
+            "BufferCloseAllButCurrentOrPinned")
+        :add_entry("GotoBuffer1", "1", "Goto buffer 1", "BufferGoto 1")
+        :add_entry("GotoBuffer2", "2", "Goto buffer 2", "BufferGoto 2")
+        :add_entry("GotoBuffer3", "3", "Goto buffer 3", "BufferGoto 3")
+        :add_entry("GotoBuffer4", "4", "Goto buffer 4", "BufferGoto 4")
+        :add_entry("GotoBuffer5", "5", "Goto buffer 5", "BufferGoto 5")
+        :add_entry("GotoBuffer6", "6", "Goto buffer 6", "BufferGoto 6")
+        :add_entry("GotoBuffer7", "7", "Goto buffer 7", "BufferGoto 7")
+        :add_entry("GotoBuffer8", "8", "Goto buffer 8", "BufferGoto 8")
+        :add_entry("GotoBuffer9", "9", "Goto buffer 9", "BufferGoto 9")
+        :bind()
 end

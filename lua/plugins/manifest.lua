@@ -1,23 +1,28 @@
 return {
     colors = require "colors.plugins",
+    nvim = {
+        {
+            "folke/neodev.nvim",
+        }
+    },
     utils = {
         {
             "nvim-tree/nvim-tree.lua",
-            config = require "utils.nvimtree",
+            config = require "utils.nvimtree-setup",
             requires = {
-                "nvim-tree/nvim-web-devicons", -- optional, for file icons
+                "nvim-tree/nvim-web-devicons",
             },
         },
         {
             "preservim/nerdcommenter",
-            config = require "utils.nerdcommenter",
+            config = require "utils.nerdcommenter-setup",
         },
         {
             "jiangmiao/auto-pairs",
         },
         {
             "nvim-lualine/lualine.nvim",
-            config = require "utils.lualine",
+            config = require "utils.lualine-setup",
             requires = { "kyazdani42/nvim-web-devicons", opt = true },
         },
         {
@@ -31,7 +36,7 @@ return {
             tag = "0.1.1",
             -- branch = "master",
             -- or                            , branch = '0.1.x',
-            config = require "utils.telescope",
+            config = require "utils.telescope-setup",
             requires = { { "nvim-lua/plenary.nvim" } },
         },
         {
@@ -46,6 +51,10 @@ return {
         },
         {
             "github/copilot.vim",
+        },
+        {
+            "voldikss/vim-floaterm",
+            config = require "utils.floaterm-setup",
         },
     },
     github = {

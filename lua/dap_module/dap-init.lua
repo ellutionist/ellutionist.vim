@@ -1,6 +1,3 @@
-local km = require "helper.keymap"
-local ls = km.leader_and_space
-
 local function setup_signs()
     vim.fn.sign_define(
         "DapBreakpoint",
@@ -18,18 +15,8 @@ end
 
 setup_signs()
 
+local keymap_grp = require "mykeymaps.group"
 local dap = require "dap"
-ls("db", dap.toggle_breakpoint)
-ls("dO", dap.step_out)
-ls("dI", dap.step_into)
-ls("do", dap.step_over)
-ls("dg", dap.continue)
-ls("dn", dap.run_to_cursor)
-ls("dc", dap.terminate)
-ls("dC", dap.clear_breakpoints)
-ls("dR", dap.run_last)
-ls("dk", dap.up)
-ls("dj", dap.down)
 
 local function run_from_config()
     local fd = io.open(vim.fn.getcwd() .. "/dap-settings.json")
@@ -56,4 +43,17 @@ local function run_from_config()
     end)
 end
 
-ls("dr", run_from_config)
+keymap_grp.new_or_get("Debug", "d")
+    :add_entry("ToggleBreakpoint", "b", "Toggle breakpoint", dap.toggle_breakpoint)
+    :add_entry("StepOut", "O", "Step out", dap.step_out)
+    :add_entry("StepInto", "I", "Step into", dap.step_into)
+    :add_entry("StepOver", "o", "Step over", dap.step_over)
+    :add_entry("Continue", "g", "Continue", dap.continue)
+    :add_entry("RunToCursor", "n", "Run to cursor", dap.run_to_cursor)
+    :add_entry("Terminate", "c", "Terminate", dap.terminate)
+    :add_entry("ClearBreakpoints", "C", "Clear breakpoints", dap.clear_breakpoints)
+    :add_entry("RunLast", "R", "Run last", dap.run_last)
+    :add_entry("GoUp", "k", "GoUp", dap.up)
+    :add_entry("GoDown", "j", "GoDown", dap.down)
+    :add_entry("RunFromConfig", "r", "Run from config", run_from_config)
+    :bind()

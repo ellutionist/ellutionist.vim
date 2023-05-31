@@ -21,6 +21,8 @@ vim.cmd("set tabstop=4")
 vim.cmd("set shiftwidth=4")
 vim.cmd("set expandtab")
 vim.cmd("autocmd FileType make setlocal noexpandtab")
+vim.cmd "tnoremap <Esc> <C-\\><C-n>"
+vim.cmd "tnoremap <C-[> <C-\\><C-n>"
 
 vim.o.encoding = "utf-8"
 vim.o.fileencoding = "utf-8"
