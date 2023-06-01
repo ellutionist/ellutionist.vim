@@ -4,7 +4,7 @@ return function()
     vim.g.floaterm_height = 0.8
     vim.g.floaterm_autoinsert = false
     require "mykeymaps.group".new_or_get(
-        "Terminal", "t"
+        "Terminal", "f"
     )
         :add_entry("New", "o", "New terminal", "FloatermNew")
         :add_entry("Toggle", "t", "Toggle terminal", "FloatermToggle")

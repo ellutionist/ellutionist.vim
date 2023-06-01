@@ -180,7 +180,7 @@ return function()
 
     local keymap_grp = require "mykeymaps.group"
 
-    keymap_grp.new("FileExplorer", "e")
+    keymap_grp.new("FileExplorer", "t")
         :add_entry("Open", "o", "Open Explorer", "NvimTreeOpen")
         :add_entry("Close", "c", "Close Explorer", "NvimTreeClose")
         :add_entry("Focus", "n", "Focus Explorer", "NvimTreeFocus", { "F" })
