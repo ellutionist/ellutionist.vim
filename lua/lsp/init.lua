@@ -8,4 +8,13 @@ return function()
     require("lspconfig").gopls.setup { on_attach = common.on_attach }
     require("lspconfig").awk_ls.setup { on_attach = common.on_attach }
     require("lspconfig").cmake.setup { on_attach = common.on_attach }
+    require 'lspconfig'.rust_analyzer.setup {
+        settings = {
+            ['rust-analyzer'] = {
+                diagnostics = {
+                    enable = false,
+                }
+            }
+        }
+    }
 end
