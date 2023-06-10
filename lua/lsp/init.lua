@@ -9,6 +9,7 @@ return function()
     require("lspconfig").awk_ls.setup { on_attach = common.on_attach }
     require("lspconfig").cmake.setup { on_attach = common.on_attach }
     require 'lspconfig'.rust_analyzer.setup {
+        on_attach = common.on_attach,
         settings = {
             ['rust-analyzer'] = {
                 diagnostics = {
