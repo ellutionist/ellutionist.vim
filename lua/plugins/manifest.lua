@@ -37,7 +37,7 @@ return {
             -- branch = "master",
             -- or                            , branch = '0.1.x',
             config = require "utils.telescope-setup",
-            requires = { { "nvim-lua/plenary.nvim" } },
+            requires = { { "nvim-lua/plenary.nvim" }, { "nvim-telescope/telescope-live-grep-args.nvim" } },
         },
         {
             "goolord/alpha-nvim",
