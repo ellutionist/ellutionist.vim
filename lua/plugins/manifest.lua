@@ -75,8 +75,10 @@ return {
         },
 
         "hrsh7th/cmp-nvim-lsp",
-        "nvim-treesitter/nvim-treesitter",
-
+        {
+            "nvim-treesitter/nvim-treesitter",
+            config = require "utils.nvim-treesitter-setup",
+        },
         {
             "simrat39/symbols-outline.nvim",
             config = require "lsp.outlines",

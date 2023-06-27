@@ -5,6 +5,7 @@ return function()
     require "lsp.clangd-ls"
     require "lsp.json-ls"
     require "lsp.pyright-lsp"
+    require 'lspconfig'.luau_lsp.setup { on_attach = common.on_attach }
     require("lspconfig").gopls.setup { on_attach = common.on_attach }
     require("lspconfig").awk_ls.setup { on_attach = common.on_attach }
     require("lspconfig").cmake.setup { on_attach = common.on_attach }
