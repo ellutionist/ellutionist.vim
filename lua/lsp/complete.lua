@@ -9,7 +9,7 @@ return function()
             end,
         },
         mapping = cmp.mapping.preset.insert({
-            ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
+            ['<C-u>'] = cmp.mapping.scroll_docs( -4), -- Up
             ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
             -- C-b (back) C-f (forward) for snippet placeholder navigation.
             ['<C-Space>'] = cmp.mapping.complete(),
@@ -29,8 +29,8 @@ return function()
             ['<S-Tab>'] = cmp.mapping(function(fallback)
                 if cmp.visible() then
                     cmp.select_prev_item()
-                elseif luasnip.jumpable(-1) then
-                    luasnip.jump(-1)
+                elseif luasnip.jumpable( -1) then
+                    luasnip.jump( -1)
                 else
                     fallback()
                 end
@@ -38,6 +38,7 @@ return function()
         }),
         sources = {
             { name = 'nvim_lsp' },
+            { name = 'path' }
             -- { name = 'luasnip' },
         },
     }

@@ -1,4 +1,4 @@
-local colorscheme = "gruvbox"
+local colorscheme = "deus"
 local background = "dark"
 
 local function get_colors()

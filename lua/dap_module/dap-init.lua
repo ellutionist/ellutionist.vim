@@ -18,6 +18,8 @@ setup_signs()
 local keymap_grp = require "mykeymaps.group"
 local dap = require "dap"
 
+dap.set_log_level("DEBUG")
+
 local function run_from_config()
     local fd = io.open(vim.fn.getcwd() .. "/dap-settings.json")
     if not fd then
