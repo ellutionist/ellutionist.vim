@@ -5,12 +5,14 @@
 ---@field public alternatives string[]
 ---@field public description string
 ---@field public action function
+---@field public mode string?
 local _M = {}
 
 local utils = require "utils"
 local bind = require "mykeymaps.bind".leader_and_space
+local bind_visual = require "mykeymaps.bind".leader_and_space_visual
 
-function _M.new(leader_key, name, keys, alternatives, description, action)
+function _M.new(leader_key, name, keys, alternatives, description, action, mode)
     local self = setmetatable({}, { __index = _M })
 
     assert(utils.non_empty_string(leader_key), "leader_key must be a non-empty string")
@@ -26,15 +28,20 @@ function _M.new(leader_key, name, keys, alternatives, description, action)
     self.alternatives = alternatives
     self.description = description
     self.action = action
+    self.mode = mode
 
     return self
 end
 
 function _M:bind()
-    bind(self.leader_key .. self.keys, self.action)
+    local bind_func = (
+        self.mode == "v" or self.mode == "visual"
+        ) and bind_visual or bind
+
+    bind_func(self.leader_key .. self.keys, self.action)
     if utils.is_table(self.alternatives) then
         for _, key in ipairs(self.alternatives) do
-            bind(self.leader_key .. key, self.action)
+            bind_func(self.leader_key .. key, self.action)
         end
     end
 end

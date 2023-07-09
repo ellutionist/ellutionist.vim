@@ -18,6 +18,7 @@ local on_attach = function(client, bufnr)
         :add_entry("DiagnosticPrev", "p", "DiagnosticPrev",
             vim.diagnostic.goto_prev)
         :add_entry("Hover", "h", "Hover", vim.lsp.buf.hover)
+        :add_entry("Format", "f", "Format", vim.lsp.buf.format)
         :bind()
 end
 

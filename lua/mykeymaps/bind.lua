@@ -30,6 +30,11 @@ function _M.leader_and_space(key, ...)
     vim.keymap.set(_M.modes.normal, _M.keys.space(key), ...)
 end
 
+function _M.leader_and_space_visual(key, ...)
+    vim.keymap.set(_M.modes.visual, _M.keys.leader(key), ...)
+    vim.keymap.set(_M.modes.visual, _M.keys.space(key), ...)
+end
+
 _M.values = {
     cmd = function(val)
         return string.format("<cmd>%s<cr>", val)

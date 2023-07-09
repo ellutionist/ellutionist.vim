@@ -106,6 +106,7 @@ local function align_columns(rows)
     return aligned_lines
 end
 
+
 function _M:add_entry(name, keys, description, action, alternatives)
     local the_act
     if type(action) == "string" then
@@ -116,6 +117,23 @@ function _M:add_entry(name, keys, description, action, alternatives)
         the_act = action
     end
     local new_entry = entry.new(self.leader_key, name, keys, alternatives, description, the_act)
+    table.insert(self.entries, new_entry)
+    for _, row in ipairs(new_entry:describe()) do
+        table.insert(self.rows, row)
+    end
+    return self
+end
+
+function _M:add_entry_visual(name, keys, description, action, alternatives)
+    local the_act
+    if type(action) == "string" then
+        the_act = function()
+            vim.cmd(action)
+        end
+    else
+        the_act = action
+    end
+    local new_entry = entry.new(self.leader_key, name, keys, alternatives, description, the_act, "v")
     table.insert(self.entries, new_entry)
     for _, row in ipairs(new_entry:describe()) do
         table.insert(self.rows, row)
