@@ -5,6 +5,10 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>")
     vim.keymap.set("n", "rn", vim.lsp.buf.rename)
 
+
+    require "lsp.inlay-hint".on_attach(client, bufnr)
+    require "lsp.signature".on_attach(client, bufnr)
+
     local keymap_grp = require "mykeymaps.group"
     keymap_grp.new_or_get("LanguageServer", "l")
         :add_entry("Definitions", "d", "Go to definitions",
@@ -19,6 +23,7 @@ local on_attach = function(client, bufnr)
             vim.diagnostic.goto_prev)
         :add_entry("Hover", "h", "Hover", vim.lsp.buf.hover)
         :add_entry("Format", "f", "Format", vim.lsp.buf.format)
+        :add_entry("Signature", "s", "Signature", vim.lsp.buf.signature_help)
         :bind()
 end
 

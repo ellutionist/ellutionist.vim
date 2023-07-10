@@ -66,6 +66,9 @@ return {
             "lewis6991/gitsigns.nvim",
             config = require "utils.gitsigns-setup",
         },
+        {
+            "sindrets/diffview.nvim"
+        }
     },
     lsp = {
         "L3MON4D3/LuaSnip",
@@ -89,6 +92,9 @@ return {
         {
             "neovim/nvim-lspconfig",
             config = require "lsp",
+            requires = {
+                "lvimuser/lsp-inlayhints.nvim"
+            },
         },
         {
             "williamboman/mason.nvim",
