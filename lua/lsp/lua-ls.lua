@@ -6,12 +6,6 @@ local common = require "lsp.common"
 -- capabilities.textDocument.rangeFormatting = false
 -- capabilities.textDocument.range_formatting = false
 
-local function setup_neodev()
-    require("neodev").setup({})
-end
-
-pcall(setup_neodev)
-
 require("lspconfig").lua_ls.setup {
     on_attach = common.on_attach,
     flags = common.flags,
@@ -30,14 +24,6 @@ require("lspconfig").lua_ls.setup {
                 -- Get the language server to recognize the `vim` global
                 globals = { "vim", "require" },
             },
-            -- workspace = {
-            --     -- Make the server aware of Neovim runtime files
-            --     library = vim.api.nvim_get_runtime_file("", true),
-            -- },
-            -- Do not send telemetry data containing a randomized but unique identifier
-            -- telemetry = {
-            --     enable = false,
-            -- },
         },
     },
 }

@@ -7,7 +7,7 @@ local on_attach = function(client, bufnr)
 
 
     require "lsp.inlay-hint".on_attach(client, bufnr)
-    require "lsp.signature".on_attach(client, bufnr)
+    -- require "lsp.signature".on_attach(client, bufnr)
 
     local keymap_grp = require "mykeymaps.group"
     keymap_grp.new_or_get("LanguageServer", "l")

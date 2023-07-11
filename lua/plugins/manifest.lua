@@ -1,9 +1,9 @@
 return {
     colors = require "colors.plugins",
     nvim = {
-        {
-            "folke/neodev.nvim",
-        }
+        -- {
+        --     "folke/neodev.nvim",
+        -- }
     },
     utils = {
         {
