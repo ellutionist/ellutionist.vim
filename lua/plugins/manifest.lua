@@ -81,10 +81,10 @@ return {
                 -- "hrsh7th/cmp-buffer",
             },
         },
-        {
-            "nvim-treesitter/nvim-treesitter",
-            config = require "utils.nvim-treesitter-setup",
-        },
+        -- {
+        --     "nvim-treesitter/nvim-treesitter",
+        --     config = require "utils.nvim-treesitter-setup",
+        -- },
         {
             "simrat39/symbols-outline.nvim",
             config = require "lsp.outlines",
