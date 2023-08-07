@@ -56,6 +56,10 @@ return {
             "voldikss/vim-floaterm",
             config = require "utils.floaterm-setup",
         },
+        {
+            "folke/flash.nvim",
+            config = require "utils.flash-setup"
+        },
     },
     github = {
         {
