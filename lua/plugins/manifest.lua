@@ -85,10 +85,10 @@ return {
                 -- "hrsh7th/cmp-buffer",
             },
         },
-        -- {
-        --     "nvim-treesitter/nvim-treesitter",
-        --     config = require "utils.nvim-treesitter-setup",
-        -- },
+        {
+            "nvim-treesitter/nvim-treesitter",
+            config = require "utils.nvim-treesitter-setup",
+        },
         {
             "simrat39/symbols-outline.nvim",
             config = require "lsp.outlines",
@@ -96,9 +96,9 @@ return {
         {
             "neovim/nvim-lspconfig",
             config = require "lsp",
-            requires = {
-                "lvimuser/lsp-inlayhints.nvim"
-            },
+            -- requires = {
+            --     "lvimuser/lsp-inlayhints.nvim"
+            -- },
         },
         {
             "williamboman/mason.nvim",

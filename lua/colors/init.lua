@@ -1,4 +1,4 @@
-local colorscheme = "deus"
+local colorscheme = "challenger_deep"
 local background = "dark"
 
 local function get_colors()

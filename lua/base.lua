@@ -5,7 +5,7 @@ vim.cmd("syntax on")
 
 vim.o.ts = 2
 vim.o.autoindent = true
--- vim.o.mouse = false
+vim.o.mouse = ""
 
 vim.cmd "set cursorline"
 vim.cmd "hi cursorline cterm=none term=none"

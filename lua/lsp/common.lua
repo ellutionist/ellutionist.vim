@@ -6,11 +6,11 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "rn", vim.lsp.buf.rename)
 
 
-    require "lsp.inlay-hint".on_attach(client, bufnr)
+    -- require "lsp.inlay-hint".on_attach(client, bufnr)
     -- require "lsp.signature".on_attach(client, bufnr)
 
     local keymap_grp = require "mykeymaps.group"
-    keymap_grp.new_or_get("LanguageServer", "l")
+    local grp = keymap_grp.new_or_get("LanguageServer", "l")
         :add_entry("Definitions", "d", "Go to definitions",
             "Telescope lsp_definitions", { "gd" })
         :add_entry("References", "r", "Go to references",
@@ -24,7 +24,12 @@ local on_attach = function(client, bufnr)
         :add_entry("Hover", "h", "Hover", vim.lsp.buf.hover)
         :add_entry("Format", "f", "Format", vim.lsp.buf.format)
         :add_entry("Signature", "s", "Signature", vim.lsp.buf.signature_help)
-        :bind()
+
+    -- local ok = pcall(vim.lsp.inlay_hint, bufnr, true)
+    -- if ok then
+    --     grp:add_entry("InlayHintsToggle", "i", "InlayHintsToggle", function() vim.lsp.inlay_hint(bufnr, nil) end)
+    -- end
+    grp:bind()
 end
 
 local flags = {
