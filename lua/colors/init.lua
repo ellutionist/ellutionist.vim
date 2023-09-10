@@ -1,4 +1,4 @@
-local colorscheme = "challenger_deep"
+local colorscheme = "alduin"
 local background = "dark"
 
 local function get_colors()
