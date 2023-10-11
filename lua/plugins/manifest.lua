@@ -7,6 +7,10 @@ return {
     },
     utils = {
         {
+            "vim-test/vim-test",
+            config = require "utils.test-setup",
+        },
+        {
             "nvim-tree/nvim-tree.lua",
             config = require "utils.nvimtree-setup",
             requires = {

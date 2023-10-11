@@ -15,6 +15,10 @@ return function()
             ['rust-analyzer'] = {
                 diagnostics = {
                     enable = false,
+                },
+                checkOnSave = true,
+                check = {
+                    command = "clippy"
                 }
             }
         }

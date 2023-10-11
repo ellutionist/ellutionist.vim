@@ -1,4 +1,4 @@
-local colorscheme = "alduin"
+local colorscheme = "gruvbox"
 local background = "dark"
 
 local function get_colors()
