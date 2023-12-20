@@ -125,7 +125,8 @@ return {
             requires = { { "nvim-lua/plenary.nvim" } },
         },
         {
-            "aznhe21/actions-preview.nvim"
+            "aznhe21/actions-preview.nvim",
+            config = require "lsp.actions-preview",
         },
     },
     debug = {
