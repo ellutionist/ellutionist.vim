@@ -124,6 +124,9 @@ return {
             config = require "lsp.null-ls-init",
             requires = { { "nvim-lua/plenary.nvim" } },
         },
+        {
+            "aznhe21/actions-preview.nvim"
+        },
     },
     debug = {
         {

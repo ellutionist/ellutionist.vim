@@ -15,8 +15,10 @@ local on_attach = function(client, bufnr)
             "Telescope lsp_definitions", { "gd" })
         :add_entry("References", "r", "Go to references",
             "Telescope lsp_references", { "gr" })
+        :add_entry("IncomingCalls", "I", "Incoming calls",
+            "Telescope lsp_incoming_calls")
         :add_entry("Rename", "R", "Rename", vim.lsp.buf.rename)
-        :add_entry("CodeAction", "a", "CodeAction", vim.lsp.buf.code_action)
+        :add_entry("CodeAction", "a", "CodeAction", require("actions-preview").code_actions)
         :add_entry("DiagnosticNext", "n", "DiagnosticNext",
             vim.diagnostic.goto_next)
         :add_entry("DiagnosticPrev", "p", "DiagnosticPrev",
