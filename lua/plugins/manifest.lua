@@ -100,9 +100,9 @@ return {
         {
             "neovim/nvim-lspconfig",
             config = require "lsp",
-            -- requires = {
-            --     "lvimuser/lsp-inlayhints.nvim"
-            -- },
+            requires = {
+                "simrat39/rust-tools.nvim"
+            },
         },
         {
             "williamboman/mason.nvim",
