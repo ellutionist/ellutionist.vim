@@ -1,4 +1,5 @@
-local colorscheme = os.getenv("NVIM_COLOR") or "gruvbox"
+local color_env = os.getenv("NVIM_COLOR")
+local colorscheme = color_env and string.len(color_env) > 0 and color_env or "gruvbox"
 local background = "dark"
 
 local function get_colors()
