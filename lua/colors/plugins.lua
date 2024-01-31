@@ -6,5 +6,6 @@ return {
     'KeitaNakamura/neodark.vim',
     'morhetz/gruvbox',
     'sainnhe/everforest',
-    'rafi/awesome-vim-colorschemes'
+    'rafi/awesome-vim-colorschemes',
+    'romgrk/doom-one.vim',
 }
