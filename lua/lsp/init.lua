@@ -12,4 +12,5 @@ return function()
     require("lspconfig").awk_ls.setup { on_attach = common.on_attach }
     require("lspconfig").cmake.setup { on_attach = common.on_attach }
     require 'lspconfig'.marksman.setup { on_attach = common.on_attach }
+    require 'lspconfig'.tsserver.setup { on_attach = common.on_attach }
 end
