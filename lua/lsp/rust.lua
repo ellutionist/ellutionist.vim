@@ -3,6 +3,19 @@ local common = require "lsp.common"
 
 rt.setup({
     server = {
+        settings = {
+            ["rust-analyzer"] = {
+                checkOnSave = {
+                    enable = true,
+                    command = "clippy",
+                },
+                -- check = {
+                --     enable = true,
+                --     command = "clippy",
+                --     allFeatures = true,
+                -- },
+            }
+        },
         on_attach = function(client, bufnr)
             common.on_attach(client, bufnr)
             -- Hover actions
