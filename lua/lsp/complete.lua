@@ -39,6 +39,7 @@ return function()
         sources = {
             { name = 'nvim_lsp' },
             { name = 'path' },
+            { name = "crates" },
             -- { name = 'luasnip' },
         },
     }

@@ -1,17 +1,10 @@
 return function()
     local null_ls = require "null-ls"
 
-    local leader_space = require("helper.keymap").leader_and_space
-
-    local on_attach = function(client, bufnr)
-        -- vim.keymap.set("n", "<leader>F", vim.lsp.buf.format)
-        leader_space("F", function()
-            vim.lsp.buf.format { async = true }
-        end)
-    end
+    local common = require "lsp.common"
 
     null_ls.setup {
-        on_attach = on_attach,
+        on_attach = common.on_attach,
         sources = {
             null_ls.builtins.formatting.autopep8,
             -- null_ls.builtins.formatting.stylua.with {

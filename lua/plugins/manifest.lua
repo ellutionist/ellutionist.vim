@@ -120,7 +120,8 @@ return {
             end,
         },
         {
-            "jose-elias-alvarez/null-ls.nvim",
+            -- "jose-elias-alvarez/null-ls.nvim",
+            "nvimtools/none-ls.nvim",
             config = require "lsp.null-ls-init",
             requires = { { "nvim-lua/plenary.nvim" } },
         },
@@ -128,6 +129,11 @@ return {
             "aznhe21/actions-preview.nvim",
             config = require "lsp.actions-preview",
         },
+        {
+            "saecki/crates.nvim",
+            tag = "stable",
+            config = require "lsp.crates-nvim",
+        }
     },
     debug = {
         {

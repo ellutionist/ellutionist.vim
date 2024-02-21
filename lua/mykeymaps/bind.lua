@@ -26,7 +26,10 @@ _M.keys = {
 }
 
 function _M.leader_and_space(key, ...)
+    -- pcall(vim.keymap.del, _M.modes.normal, _M.keys.leader(key))
     vim.keymap.set(_M.modes.normal, _M.keys.leader(key), ...)
+
+    -- pcall(vim.keymap.del, _M.modes.normal, _M.keys.space(key))
     vim.keymap.set(_M.modes.normal, _M.keys.space(key), ...)
 end
 
