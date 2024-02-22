@@ -137,8 +137,10 @@ return {
         {
             "elentok/format-on-save.nvim",
             config = require "lsp.fmt-on-save-init",
+        },
+        {
+            "folke/trouble.nvim"
         }
-
     },
     debug = {
         {
