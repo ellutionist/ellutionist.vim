@@ -4,6 +4,8 @@ return function()
     format_on_save.setup({
         formatter_by_ft = {
             rust = formatters.lsp,
+            toml = formatters.lsp,
+            lua = formatters.lsp,
         }
     })
 end
