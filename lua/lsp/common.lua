@@ -30,6 +30,7 @@ local on_attach = function(client, bufnr)
         :add_entry("Hover", "h", "Hover", vim.lsp.buf.hover)
         :add_entry("Format", "f", "Format", vim.lsp.buf.format)
         :add_entry("Signature", "s", "Signature", vim.lsp.buf.signature_help)
+        :add_entry("LspInfo", "l", "Lsp Info", "LspInfo")
 
     -- local ok = pcall(vim.lsp.inlay_hint, bufnr, true)
     -- if ok then

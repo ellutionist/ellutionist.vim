@@ -6,15 +6,15 @@ return function()
     null_ls.setup {
         on_attach = common.on_attach,
         sources = {
-            null_ls.builtins.formatting.autopep8,
-            null_ls.builtins.formatting.taplo.with {
-                extra_args = {
-                    "--option",
-                    "reorder_keys=true",
-                    "--option",
-                    "indent_string='    '"
-                },
-            },
+            -- null_ls.builtins.formatting.autopep8,
+            -- null_ls.builtins.formatting.taplo.with {
+            --     extra_args = {
+            --         "--option",
+            --         "reorder_keys=true",
+            --         "--option",
+            --         "indent_string='    '"
+            --     },
+            -- },
             -- null_ls.builtins.formatting.stylua.with {
             -- extra_args = {
             --     "--call-parentheses",

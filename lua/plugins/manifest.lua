@@ -136,6 +136,7 @@ return {
         {
             "saecki/crates.nvim",
             tag = "stable",
+            requires = { "nvimtools/none-ls.nvim" },
             config = require "lsp.crates-nvim",
         },
         {
@@ -144,7 +145,10 @@ return {
         },
         {
             "folke/trouble.nvim"
-        }
+        },
+        {
+            "astral-sh/ruff-lsp"
+        },
     },
     debug = {
         {

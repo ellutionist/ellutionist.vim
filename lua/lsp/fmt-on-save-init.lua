@@ -6,6 +6,7 @@ return function()
             rust = formatters.lsp,
             toml = formatters.lsp,
             lua = formatters.lsp,
+            sh = formatters.shfmt,
         }
     })
 end

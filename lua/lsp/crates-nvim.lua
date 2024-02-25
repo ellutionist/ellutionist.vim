@@ -7,7 +7,6 @@ return function()
         },
 
         on_attach = function(bufnr)
-            print "crates.nvim: on_attach"
             local keymap_grp = require "mykeymaps.group"
             local grp = keymap_grp.new_or_get("LanguageServer", "l")
                 :add_entry("Popup", "P", "Show Popup",
