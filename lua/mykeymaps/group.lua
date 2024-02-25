@@ -12,6 +12,7 @@ local utils = require "utils"
 local bind = require "mykeymaps.bind".leader_and_space
 local entry = require "mykeymaps.entry"
 local display = require "myui.mywindow".split_and_display
+local wk = require "which-key"
 
 local groups = {}
 
@@ -142,15 +143,34 @@ function _M:add_entry_visual(name, keys, description, action, alternatives)
 end
 
 function _M:bind()
+    -- for _, one_entry in ipairs(self.entries) do
+    --     one_entry:bind()
+    -- end
+    --
+    -- local aligned_lines = align_columns(self.rows)
+    --
+    -- bind(self.leader_key .. "?", function()
+    --     display(aligned_lines)
+    -- end)
+
+    local ws_entries = { name = self.name }
+
     for _, one_entry in ipairs(self.entries) do
-        one_entry:bind()
+        local k = one_entry.keys
+        assert(type(k) == "string", "keys must be a string")
+        ws_entries[k] = {
+            one_entry.action,
+            one_entry.name,
+        }
     end
 
-    local aligned_lines = align_columns(self.rows)
+    wk.register({
+        [self.leader_key] = ws_entries,
+    }, { prefix = "<space>" })
+    wk.register({
+        [self.leader_key] = ws_entries,
+    }, { prefix = "<leader>" })
 
-    bind(self.leader_key .. "?", function()
-        display(aligned_lines)
-    end)
 
     return self
 end

@@ -6,6 +6,7 @@ return {
         -- }
     },
     utils = {
+        { "folke/which-key.nvim" },
         {
             "vim-test/vim-test",
             config = require "utils.test-setup",
