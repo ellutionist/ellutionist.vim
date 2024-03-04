@@ -1,8 +1,8 @@
 local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<cr>")
-    vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>")
+    vim.keymap.set("n", "gr", "<cmd>Trouble lsp_references<cr>")
+    vim.keymap.set("n", "gd", "<cmd>Trouble lsp_definitions<cr>")
     vim.keymap.set("n", "rn", vim.lsp.buf.rename)
 
 
@@ -12,15 +12,15 @@ local on_attach = function(client, bufnr)
     local keymap_grp = require "mykeymaps.group"
     local grp = keymap_grp.new_or_get("LanguageServer", "l")
         :add_entry("Definitions", "d", "Go to definitions",
-            "Telescope lsp_definitions", { "gd" })
+            "Trouble lsp_definitions", { "gd" })
         :add_entry("References", "r", "Go to references",
-            "Telescope lsp_references", { "gr" })
+            "Trouble lsp_references", { "gr" })
         :add_entry("IncomingCalls", "I", "Incoming calls",
             "Telescope lsp_incoming_calls")
         :add_entry("Implementations", "i", "Implementations",
-            "Telescope lsp_implementations")
+            "Trouble lsp_implementations")
         :add_entry("TypeDefinition", "t", "Type definition",
-            "Telescope lsp_type_definitions")
+            "Trouble lsp_type_definitions")
         :add_entry("Rename", "R", "Rename", vim.lsp.buf.rename)
         :add_entry("CodeAction", "a", "CodeAction", require("actions-preview").code_actions)
         :add_entry("DiagnosticNext", "n", "DiagnosticNext",
