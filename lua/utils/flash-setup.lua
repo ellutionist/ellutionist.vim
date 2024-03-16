@@ -78,7 +78,8 @@ return function()
     require "mykeymaps.group".new_or_get(
         "Jump", "j"
     )
-        :add_entry("Jump", "/", "Jump", jump, { "j" })
+        :add_entry("Jump", "/", "Jump", jump)
+        :add_entry("Jump2", "j", "Jump2", jump)
         :add_entry("Diagnostic", "d", "Diagnostic", diagnostic)
         :add_entry("Match", "*", "Match", match_under_cursor)
         :add_entry("Line", "l", "Line", jump_to_line)
