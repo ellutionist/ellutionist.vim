@@ -24,9 +24,21 @@ local on_attach = function(client, bufnr)
         :add_entry("Rename", "R", "Rename", vim.lsp.buf.rename)
         :add_entry("CodeAction", "a", "CodeAction", require("actions-preview").code_actions)
         :add_entry("DiagnosticNext", "n", "DiagnosticNext",
-            vim.diagnostic.goto_next)
+            function()
+                vim.diagnostic.goto_next({
+                    severity = {
+                        min = vim.diagnostic.severity.WARN
+                    }
+                })
+            end)
         :add_entry("DiagnosticPrev", "p", "DiagnosticPrev",
-            vim.diagnostic.goto_prev)
+            function()
+                vim.diagnostic.goto_prev({
+                    severity = {
+                        min = vim.diagnostic.severity.WARN
+                    }
+                })
+            end)
         :add_entry("Hover", "h", "Hover", vim.lsp.buf.hover)
         :add_entry("Format", "f", "Format", vim.lsp.buf.format)
         :add_entry("Signature", "s", "Signature", vim.lsp.buf.signature_help)
