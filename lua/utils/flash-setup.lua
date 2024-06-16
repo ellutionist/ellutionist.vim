@@ -75,6 +75,8 @@ return function()
     end
 
 
+    vim.keymap.set("n", "<C-j>", two_chars_jump)
+
     require "mykeymaps.group".new_or_get(
         "Jump", "j"
     )

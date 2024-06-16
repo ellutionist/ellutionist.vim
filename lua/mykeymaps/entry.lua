@@ -36,7 +36,7 @@ end
 function _M:bind()
     local bind_func = (
         self.mode == "v" or self.mode == "visual"
-        ) and bind_visual or bind
+    ) and bind_visual or bind
 
     bind_func(self.leader_key .. self.keys, self.action)
     if utils.is_table(self.alternatives) then
