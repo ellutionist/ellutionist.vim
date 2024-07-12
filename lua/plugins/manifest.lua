@@ -7,6 +7,11 @@ return {
     },
     utils = {
         { "folke/which-key.nvim" },
+        -- {
+        --     "mvllow/modes.nvim",
+        --     tag = "v0.2.0",
+        --     config = function() require('modes').setup() end
+        -- },
         {
             "vim-test/vim-test",
             config = require "utils.test-setup",
@@ -152,6 +157,9 @@ return {
     },
     debug = {
         {
+            "nvim-neotest/nvim-nio",
+        },
+        {
             "mfussenegger/nvim-dap",
             config = require "dap_module",
         },
@@ -161,6 +169,7 @@ return {
                 require "dap_module.dap-ui-init"
             end,
             requires = {
+                "nvim-neotest/nvim-nio",
                 "mfussenegger/nvim-dap",
             },
         },
