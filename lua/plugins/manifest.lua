@@ -149,7 +149,10 @@ return {
             config = require "lsp.fmt-on-save-init",
         },
         {
-            "folke/trouble.nvim"
+            "folke/trouble.nvim",
+            config = function()
+                require("trouble").setup {}
+            end
         },
         {
             "astral-sh/ruff-lsp"

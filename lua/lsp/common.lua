@@ -1,7 +1,7 @@
 local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    vim.keymap.set("n", "gr", "<cmd>Trouble lsp_references<cr>")
+    vim.keymap.set("n", "gr", "<cmd>Trouble lsp_references focus=true<cr>")
     vim.keymap.set("n", "gd", "<cmd>Trouble lsp_definitions<cr>")
     vim.keymap.set("n", "rn", vim.lsp.buf.rename)
 
@@ -11,15 +11,19 @@ local on_attach = function(client, bufnr)
 
     local keymap_grp = require "mykeymaps.group"
     local grp = keymap_grp.new_or_get("LanguageServer", "l")
-        :add_entry("Definitions", "d", "Go to definitions",
-            "Trouble lsp_definitions", { "gd" })
+        :add_entry("Diagnostics", "d", "Toggle Diagnostics",
+            "Trouble diagnostics toggle")
+        :add_entry("Symbols", "s", "Toggle Symbols",
+            "Trouble symbols focus=true")
         :add_entry("References", "r", "Go to references",
-            "Trouble lsp_references", { "gr" })
+            "Trouble lsp_references focus=true", { "gr" })
+        :add_entry("References", "tr", "toggle lsp references",
+            "Trouble lsp_references toggle", { "gr" })
         :add_entry("IncomingCalls", "I", "Incoming calls",
             "Telescope lsp_incoming_calls")
         :add_entry("Implementations", "i", "Implementations",
             "Trouble lsp_implementations")
-        :add_entry("TypeDefinition", "t", "Type definition",
+        :add_entry("TypeDefinition", "T", "Type definition",
             "Trouble lsp_type_definitions")
         :add_entry("Rename", "R", "Rename", vim.lsp.buf.rename)
         :add_entry("CodeAction", "a", "CodeAction", require("actions-preview").code_actions)
