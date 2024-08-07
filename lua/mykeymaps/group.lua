@@ -153,23 +153,38 @@ function _M:bind()
     --     display(aligned_lines)
     -- end)
 
-    local ws_entries = { name = self.name }
 
-    for _, one_entry in ipairs(self.entries) do
-        local k = one_entry.keys
-        assert(type(k) == "string", "keys must be a string")
-        ws_entries[k] = {
-            one_entry.action,
-            one_entry.name,
+    for _, prefix in ipairs({ "<space>", "<leader>" }) do
+        local ws_entries = {
+            { prefix .. self.leader_key, group = self.name },
         }
+
+        for _, one_entry in ipairs(self.entries) do
+            local k = one_entry.keys
+            assert(type(k) == "string", "keys must be a string")
+            table.insert(ws_entries,
+                { prefix .. self.leader_key .. k, one_entry.action, desc = one_entry.name })
+        end
+
+        wk.add(ws_entries)
     end
 
-    wk.register({
-        [self.leader_key] = ws_entries,
-    }, { prefix = "<space>" })
-    wk.register({
-        [self.leader_key] = ws_entries,
-    }, { prefix = "<leader>" })
+    -- local ws_entries = { name = self.name }
+    -- for _, one_entry in ipairs(self.entries) do
+    --     local k = one_entry.keys
+    --     assert(type(k) == "string", "keys must be a string")
+    --     ws_entries[k] = {
+    --         one_entry.action,
+    --         one_entry.name,
+    --     }
+    -- end
+    --
+    -- wk.register({
+    --     [self.leader_key] = ws_entries,
+    -- }, { prefix = "<space>" })
+    -- wk.register({
+    --     [self.leader_key] = ws_entries,
+    -- }, { prefix = "<leader>" })
 
 
     return self
