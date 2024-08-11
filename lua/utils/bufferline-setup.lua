@@ -99,6 +99,7 @@ return function()
     local keymap_grp = require "mykeymaps.group"
 
     keymap_grp.new("Buffer", "b")
+        :add_entry("ViewAllBuffers", "v", "View all buffers", "Telescope buffers")
         :add_entry("PickBuffer", "b", "Pick buffer", "BufferPick")
         :add_entry("NextBuffer", "n", "Next buffer", "BufferNext")
         :add_entry("PreviousBuffer", "p", "Previous buffer", "BufferPrevious")

@@ -11,11 +11,11 @@ return function()
         [[╚══════╝╚══════╝╚══════╝ ╚═════╝    ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝╚══════╝   ╚═╝   ]],
     }
     startify.section.top_buttons.val = {
-        startify.button("e", "File Explorer", ":NvimTreeOpen<cr>"),
+        startify.button("f", "File Explorer", ":NvimTreeOpen<cr>"),
         startify.button("g", "Git", ":Git<CR> :wincmd o<cr>"),
-        startify.button("t", "Telescope", ":Telescope<CR>"),
+        startify.button("T", "Telescope", ":Telescope<CR>"),
         startify.button("n", "New", ":enew<CR>"),
-        startify.button("f", "Find Files", ":Telescope find_files<CR>"),
+        startify.button("s", "Search Files", ":Telescope find_files<CR>"),
         startify.button("m", "Mason Installer", ":Mason<CR>"),
     }
     -- disable MRU
