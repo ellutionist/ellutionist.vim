@@ -5,10 +5,11 @@ return function()
     require "lsp.json-ls"
     require "lsp.pyright-lsp"
     require "lsp.rust"
+    require "lsp.gopls-init"
 
     local servers = {
         "luau_lsp",
-        "gopls",
+        -- "gopls",
         "awk_ls",
         "cmake",
         "marksman",
