@@ -13,7 +13,7 @@ return function()
         "awk_ls",
         "cmake",
         "marksman",
-        "tsserver",
+        -- "tsserver",
         "ruff_lsp",
         "taplo",
         "bashls",
