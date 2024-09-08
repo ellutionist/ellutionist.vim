@@ -15,11 +15,11 @@ rt.setup({
             ["rust-analyzer"] = {
                 cargo = {
                     features = "all"
-                }
-                -- checkOnSave = {
-                --     enable = true,
-                --     command = "clippy",
-                -- },
+                },
+                checkOnSave = {
+                    enable = true,
+                    command = "clippy",
+                },
                 -- check = {
                 --     enable = true,
                 --     command = "clippy",

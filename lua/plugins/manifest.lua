@@ -27,9 +27,9 @@ return {
             "preservim/nerdcommenter",
             config = require "utils.nerdcommenter-setup",
         },
-        {
-            "jiangmiao/auto-pairs",
-        },
+        -- {
+        --     "jiangmiao/auto-pairs",
+        -- },
         {
             "nvim-lualine/lualine.nvim",
             config = require "utils.lualine-setup",
