@@ -2,7 +2,7 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
     vim.keymap.set("n", "gr", "<cmd>Trouble lsp_references focus=true<cr>")
-    vim.keymap.set("n", "gd", "<cmd>Trouble lsp_definitions<cr>")
+    vim.keymap.set("n", "gd", "<cmd>Trouble lsp_definitions focus=true<cr>")
     vim.keymap.set("n", "rn", vim.lsp.buf.rename)
 
 
@@ -24,7 +24,7 @@ local on_attach = function(client, bufnr)
         :add_entry("Implementations", "i", "Implementations",
             "Trouble lsp_implementations")
         :add_entry("TypeDefinition", "T", "Type definition",
-            "Trouble lsp_type_definitions")
+            "Trouble lsp_type_definitions focus=true")
         :add_entry("Rename", "R", "Rename", vim.lsp.buf.rename)
         :add_entry("CodeAction", "a", "CodeAction", require("actions-preview").code_actions)
         :add_entry("DiagnosticNext", "n", "DiagnosticNext",
