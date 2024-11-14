@@ -14,7 +14,7 @@ rt.setup({
         settings = {
             ["rust-analyzer"] = {
                 cargo = {
-                    features = "all"
+                    -- features = "all"
                 },
                 checkOnSave = {
                     enable = true,
