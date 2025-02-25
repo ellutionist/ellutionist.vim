@@ -38,12 +38,12 @@ return {
         {
             "romgrk/barbar.nvim",
             config = require "utils.bufferline-setup",
-            requires = "nvim-web-devicons",
-            tag = "v1.5.0"
+            requires = { "nvim-web-devicons", "lewis6991/gitsigns.nvim" },
+            -- tag = "v1.5.0"
         },
         {
             "nvim-telescope/telescope.nvim",
-            tag = "0.1.4",
+            -- tag = "0.1.4",
             -- branch = "master",
             -- or                            , branch = '0.1.x',
             config = require "utils.telescope-setup",
@@ -97,7 +97,7 @@ return {
         },
         {
             "nvim-treesitter/nvim-treesitter",
-            tag = "v0.9.3",
+            -- tag = "v0.9.3",
         },
         -- {
         --     "nvim-treesitter/nvim-treesitter-textobjects",
@@ -154,7 +154,7 @@ return {
         },
         {
             "folke/trouble.nvim",
-            tag = "v3.6.0",
+            -- tag = "v3.6.0",
             config = function()
                 require("trouble").setup {}
             end
@@ -189,5 +189,21 @@ return {
         {
             'ray-x/go.nvim'
         }
+    },
+    ai = {
+        {
+            'yetone/avante.nvim',
+            branch = 'main',
+            run = 'make',
+            config = require "ai.avante-setup",
+            requires = {
+                'nvim-treesitter/nvim-treesitter',
+                'stevearc/dressing.nvim',
+                'nvim-lua/plenary.nvim',
+                'MunifTanjim/nui.nvim',
+                'MeanderingProgrammer/render-markdown.nvim',
+            }
+        }
+
     }
 }
