@@ -14,7 +14,7 @@ return function()
         "cmake",
         "marksman",
         -- "tsserver",
-        "ruff_lsp",
+        "ruff",
         "taplo",
         "bashls",
     }

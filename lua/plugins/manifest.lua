@@ -96,12 +96,16 @@ return {
             },
         },
         {
-            "nvim-treesitter/nvim-treesitter-textobjects",
-            requires = {
-                "nvim-treesitter/nvim-treesitter",
-            },
-            config = require "utils.nvim-treesitter-setup",
+            "nvim-treesitter/nvim-treesitter",
+            tag = "v0.9.3",
         },
+        -- {
+        --     "nvim-treesitter/nvim-treesitter-textobjects",
+        --     requires = {
+        --         "nvim-treesitter/nvim-treesitter",
+        --     },
+        --     config = require "utils.nvim-treesitter-setup",
+        -- },
         {
             "simrat39/symbols-outline.nvim",
             config = require "lsp.outlines",
@@ -150,12 +154,16 @@ return {
         },
         {
             "folke/trouble.nvim",
+            tag = "v3.6.0",
             config = function()
                 require("trouble").setup {}
             end
         },
         {
             "astral-sh/ruff-lsp"
+        },
+        {
+            "tamago324/nlsp-settings.nvim"
         },
     },
     debug = {
