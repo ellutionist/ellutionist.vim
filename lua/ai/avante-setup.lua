@@ -1,11 +1,10 @@
 return function()
     local config = {
         ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
-        provider = "claude", -- The provider used in Aider mode or in the planning phase of Cursor Planning Mode
         -- WARNING: Since auto-suggestions are a high-frequency operation and therefore expensive,
         -- currently designating it as `copilot` provider is dangerous because: https://github.com/yetone/avante.nvim/issues/1048
         -- Of course, you can reduce the request frequency by increasing `suggestion.debounce`.
-        auto_suggestions_provider = "claude",
+        auto_suggestions_provider = nil,
         cursor_applying_provider = nil, -- The provider used in the applying phase of Cursor Planning Mode, defaults to nil, when nil uses Config.provider as the provider for the applying phase
         claude = {
             endpoint = "https://api.anthropic.com",
@@ -13,6 +12,35 @@ return function()
             model = "claude-3-5-sonnet-20241022",
             temperature = 0,
             max_tokens = 4096,
+        },
+        -- provider = "copilot", -- The provider used in Aider mode or in the planning phase of Cursor Planning Mode
+        copilot = {
+            endpoint = "https://api.githubcopilot.com",
+            model = "gpt-4o-2024-08-06",
+            proxy = nil,            -- [protocol://]host[:port] Use this proxy
+            allow_insecure = false, -- Allow insecure server connections
+            timeout = 30000,        -- Timeout in milliseconds
+            temperature = 0,
+            max_tokens = 4096,
+        },
+        provider = "copilot",
+        vendors = {
+            deepseek = {
+                __inherited_from = "openai",
+                api_key_name = "DEEPSEEK_API_KEY",
+                endpoint = "https://api.deepseek.com",
+                -- model = "deepseek-reasoner",
+                model = "deepseek-chat",
+                disable_tools = true,
+            },
+            dsr1 = {
+                __inherited_from = "openai",
+                api_key_name = "DEEPSEEK_API_KEY",
+                endpoint = "https://api.deepseek.com",
+                model = "deepseek-reasoner",
+                -- model = "deepseek-chat",
+                disable_tools = true,
+            },
         },
         ---Specify the special dual_boost mode
         ---1. enabled: Whether to enable dual_boost mode. Default to false.
@@ -48,12 +76,13 @@ return function()
                 theirs = "ct",
                 all_theirs = "ca",
                 both = "cb",
-                cursor = "cc",
+                -- cursor = "cc",
                 next = "]x",
                 prev = "[x",
             },
             suggestion = {
-                accept = "<M-l>",
+                -- accept = "<M-l>",
+                accept = "<C-a>",
                 next = "<M-]>",
                 prev = "<M-[>",
                 dismiss = "<C-]>",
@@ -69,8 +98,8 @@ return function()
             sidebar = {
                 apply_all = "A",
                 apply_cursor = "a",
-                switch_windows = "<Tab>",
-                reverse_switch_windows = "<S-Tab>",
+                switch_windows = "<S-Tab>",
+                -- reverse_switch_windows = "<S-Tab>",
             },
         },
         hints = { enabled = true },
@@ -78,7 +107,7 @@ return function()
             ---@type "right" | "left" | "top" | "bottom"
             position = "right",   -- the position of the sidebar
             wrap = true,          -- similar to vim.o.wrap
-            width = 30,           -- default % based on available width
+            width = 40,           -- default % based on available width
             sidebar_header = {
                 enabled = true,   -- true, false to enable/disable the header
                 align = "center", -- left, center, right for title
