@@ -1,19 +1,15 @@
 return function()
     local crates = require "crates"
     crates.setup {
-        null_ls = {
+        lsp = {
             enabled = true,
-            name = "crates.nvim",
+            on_attach = function(client, bufnr)
+                -- the same on_attach function as for your other lsp's
+            end,
+            actions = true,
+            completion = true,
+            hover = true,
         },
 
-        on_attach = function(bufnr)
-            local keymap_grp = require "mykeymaps.group"
-            local grp = keymap_grp.new_or_get("LanguageServer", "l")
-                :add_entry("Popup", "P", "Show Popup",
-                    function()
-                        crates.show_popup()
-                    end)
-            grp:bind()
-        end,
     }
 end

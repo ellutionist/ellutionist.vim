@@ -144,7 +144,7 @@ return {
         },
         {
             "saecki/crates.nvim",
-            tag = "stable",
+            -- tag = "stable",
             requires = { "nvimtools/none-ls.nvim" },
             config = require "lsp.crates-nvim",
         },
@@ -201,6 +201,7 @@ return {
                 'stevearc/dressing.nvim',
                 'nvim-lua/plenary.nvim',
                 'MunifTanjim/nui.nvim',
+                'HakonHarnes/img-clip.nvim',
                 'MeanderingProgrammer/render-markdown.nvim',
             }
         }
