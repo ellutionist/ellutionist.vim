@@ -12,11 +12,11 @@ rt.setup({
                     enable = true,
                     command = "clippy",
                 },
-                -- check = {
-                --     enable = true,
-                --     command = "clippy",
-                --     allFeatures = true,
-                -- },
+                check = {
+                    enable = true,
+                    command = "clippy",
+                    allFeatures = true,
+                },
             }
         },
         on_attach = function(client, bufnr)
@@ -31,6 +31,30 @@ rt.setup({
                 if type(features) == "table" then
                     -- print(vim.inspect(features))
                     client.config.settings["rust-analyzer"].cargo.features = features
+                end
+                local disable_clippy = config["disable_clippy"] or false
+
+                if disable_clippy then
+                    client.config.settings["rust-analyzer"].checkOnSave = {
+                        enable = true,
+                        command = "check",
+                    }
+                    client.config.settings["check"] = {
+                        enable = true,
+                        command = "check",
+                        allFeatures = true,
+                    }
+                else
+                    client.config.settings["rust-analyzer"].checkOnSave = {
+                        enable = true,
+                        command = "clippy",
+                    }
+
+                    client.config.settings["check"] = {
+                        enable = true,
+                        command = "clippy",
+                        allFeatures = true,
+                    }
                 end
             end
 

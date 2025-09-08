@@ -43,7 +43,7 @@ return function()
             live_grep_args = {
                 auto_quoting = true, -- enable/disable auto-quoting
                 -- define mappings, e.g.
-                mappings = { -- extend mappings
+                mappings = {         -- extend mappings
                     i = {
                         ["<C-k>"] = lga_actions.quote_prompt(),
                         ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
@@ -70,6 +70,7 @@ return function()
         :add_entry("Oldfiles", "o", "Old Files", "Telescope oldfiles")
         :add_entry("QuickFix", "q", "Quick Fix", "Telescope quickfix")
         :add_entry("Registers", "r", "Registers", "Telescope registers")
+        :add_entry("Buffers", "b", "Buffers", "Telescope buffers")
     -- git
         :add_entry("BufferCommits", "gC", "Buffer Git Commits", "Telescope git_bcommits")
         :add_entry("Commits", "gc", "Git Commits", "Telescope git_commits")
