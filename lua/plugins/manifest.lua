@@ -204,6 +204,15 @@ return {
                 'HakonHarnes/img-clip.nvim',
                 'MeanderingProgrammer/render-markdown.nvim',
             }
+        },
+        {
+            'CopilotC-Nvim/CopilotChat.nvim',
+            requires = {
+                'nvim-lua/plenary.nvim',
+            },
+            config = function()
+                require("CopilotChat").setup()
+            end
         }
 
     }
