@@ -111,10 +111,24 @@ return {
             config = require "lsp.outlines",
         },
         {
+            "chrisgrieser/nvim-lsp-endhints",
+            config = function()
+                require("lsp-endhints").setup({
+                    label = {
+                        truncateAtChars = 99,
+                        padding = 1,
+                        marginLeft = 0,
+                        sameKindSeparator = ", ",
+                    },
+                })
+            end,
+        },
+        {
             "neovim/nvim-lspconfig",
             config = require "lsp",
             requires = {
-                "simrat39/rust-tools.nvim"
+                -- "simrat39/rust-tools.nvim"
+                "mrcjkb/rustaceanvim",
             },
         },
         {
@@ -123,15 +137,15 @@ return {
                 require("mason").setup()
             end,
         },
-        {
-            "williamboman/mason-lspconfig.nvim",
-            commit = "a81503f0019942111fe464209237f8b4e85f4687",
-            config = function()
-                require("mason-lspconfig").setup {
-                    -- ensure_installed = { "bashls", "lua_ls", "clangd", "jsonls" },
-                }
-            end,
-        },
+        -- {
+        --     "williamboman/mason-lspconfig.nvim",
+        --     commit = "a81503f0019942111fe464209237f8b4e85f4687",
+        --     config = function()
+        --         require("mason-lspconfig").setup {
+        --             -- ensure_installed = { "bashls", "lua_ls", "clangd", "jsonls" },
+        --         }
+        --     end,
+        -- },
         {
             -- "jose-elias-alvarez/null-ls.nvim",
             "nvimtools/none-ls.nvim",
@@ -191,29 +205,38 @@ return {
         }
     },
     ai = {
-        {
-            'yetone/avante.nvim',
-            branch = 'main',
-            run = 'make',
-            config = require "ai.avante-setup",
-            requires = {
-                'nvim-treesitter/nvim-treesitter',
-                'stevearc/dressing.nvim',
-                'nvim-lua/plenary.nvim',
-                'MunifTanjim/nui.nvim',
-                'HakonHarnes/img-clip.nvim',
-                'MeanderingProgrammer/render-markdown.nvim',
-            }
-        },
-        {
-            'CopilotC-Nvim/CopilotChat.nvim',
-            requires = {
-                'nvim-lua/plenary.nvim',
-            },
-            config = function()
-                require("CopilotChat").setup()
-            end
-        }
+        -- {
+        --     "coder/claudecode.nvim",
+        --     requires = {
+        --         "folke/snacks.nvim"
+        --     },
+        --     config = function()
+        --         require("claudecode").setup()
+        --     end
+        -- }
+        -- {
+        --     'yetone/avante.nvim',
+        --     branch = 'main',
+        --     run = 'make',
+        --     config = require "ai.avante-setup",
+        --     requires = {
+        --         'nvim-treesitter/nvim-treesitter',
+        --         'stevearc/dressing.nvim',
+        --         'nvim-lua/plenary.nvim',
+        --         'MunifTanjim/nui.nvim',
+        --         'HakonHarnes/img-clip.nvim',
+        --         'MeanderingProgrammer/render-markdown.nvim',
+        --     }
+        -- },
+        -- {
+        --     'CopilotC-Nvim/CopilotChat.nvim',
+        --     requires = {
+        --         'nvim-lua/plenary.nvim',
+        --     },
+        --     config = function()
+        --         require("CopilotChat").setup()
+        --     end
+        -- }
 
     }
 }

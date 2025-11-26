@@ -5,7 +5,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.offsetEncoding = "utf8"
 
 
-require("lspconfig").clangd.setup {
+vim.lsp.config("clangd", {
     on_attach = common.on_attach,
     flags = common.flags,
 
@@ -22,3 +22,5 @@ require("lspconfig").clangd.setup {
         "--header-insertion=iwyu",
     },
 }
+)
+vim.lsp.enable("clangd")

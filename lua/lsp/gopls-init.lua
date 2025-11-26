@@ -1,7 +1,8 @@
 local common = require "lsp.common"
 
 
-require("lspconfig").gopls.setup { on_attach = common.on_attach,
+vim.lsp.config("gopls", {
+    on_attach = common.on_attach,
     settings = {
         gopls = {
             -- ["ui.inlayhint.hints"] = {
@@ -12,3 +13,5 @@ require("lspconfig").gopls.setup { on_attach = common.on_attach,
         },
     },
 }
+)
+vim.lsp.enable("gopls")

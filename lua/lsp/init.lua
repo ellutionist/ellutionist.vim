@@ -14,21 +14,14 @@ return function()
         "cmake",
         "marksman",
         -- "tsserver",
+        -- "rust_analyzer",
         "ruff",
         "taplo",
         "bashls",
     }
 
     for _, server in ipairs(servers) do
-        require("lspconfig")[server].setup { on_attach = common.on_attach }
+        vim.lsp.config(server, { on_attach = common.on_attach })
+        vim.lsp.enable(server)
     end
-
-    -- require 'lspconfig'.luau_lsp.setup { on_attach = common.on_attach }
-    -- require("lspconfig").gopls.setup { on_attach = common.on_attach }
-    -- require("lspconfig").awk_ls.setup { on_attach = common.on_attach }
-    -- require("lspconfig").cmake.setup { on_attach = common.on_attach }
-    -- require 'lspconfig'.marksman.setup { on_attach = common.on_attach }
-    -- require 'lspconfig'.tsserver.setup { on_attach = common.on_attach }
-    -- require('lspconfig').ruff_lsp.setup { on_attach = common.on_attach, }
-    -- require('lspconfig').taplo.setup { on_attach = common.on_attach, }
 end

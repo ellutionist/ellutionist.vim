@@ -1,6 +1,8 @@
 local common = require "lsp.common"
 
-require("lspconfig").jsonls.setup {
+vim.lsp.config("jsonls", {
     on_attach = common.on_attach,
     flags = common.flags,
 }
+)
+vim.lsp.enable("jsonls")

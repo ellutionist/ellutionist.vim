@@ -6,7 +6,7 @@ local common = require "lsp.common"
 -- capabilities.textDocument.rangeFormatting = false
 -- capabilities.textDocument.range_formatting = false
 
-require("lspconfig").lua_ls.setup {
+vim.lsp.config("lua_ls", {
     on_attach = common.on_attach,
     flags = common.flags,
 
@@ -35,4 +35,5 @@ require("lspconfig").lua_ls.setup {
             },
         },
     },
-}
+})
+vim.lsp.enable("lua_ls")

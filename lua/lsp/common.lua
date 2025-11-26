@@ -3,6 +3,8 @@ local on_attach = function(client, bufnr)
 
     vim.keymap.set("n", "gr", "<cmd>Trouble lsp_references focus=true<cr>")
     vim.keymap.set("n", "gd", "<cmd>Trouble lsp_definitions focus=true<cr>")
+    -- vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<cr>")
+    -- vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>")
     vim.keymap.set("n", "rn", vim.lsp.buf.rename)
 
 
