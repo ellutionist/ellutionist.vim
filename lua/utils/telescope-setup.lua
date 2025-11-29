@@ -60,12 +60,19 @@ return function()
 
     local keymap_grp = require "mykeymaps.group"
 
+    local function telescope_error_diagnostics()
+        require("telescope.builtin").diagnostics({
+            severity_limit = "ERROR",
+        })
+    end
+
     keymap_grp.new("Telescope", "T")
         :add_entry("Telescope", "T", "Open Telescope", "Telescope")
         :add_entry("LiveGrep", "g", "Live Grep", require("telescope").extensions.live_grep_args.live_grep_args)
         :add_entry("GrepString", "s", "Grep String", "Telescope grep_string")
         :add_entry("FindFiles", "f", "Find Files", "Telescope find_files")
         :add_entry("Diagnostics", "d", "Diagnostics", "Telescope diagnostics")
+        :add_entry("DiagnosticsError", "D", "DiagnosticsError", telescope_error_diagnostics)
         :add_entry("Colorscheme", "c", "Colorscheme", "Telescope colorscheme")
         :add_entry("Oldfiles", "o", "Old Files", "Telescope oldfiles")
         :add_entry("QuickFix", "q", "Quick Fix", "Telescope quickfix")

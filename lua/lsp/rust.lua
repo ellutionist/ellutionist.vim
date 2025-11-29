@@ -2,7 +2,7 @@
 local common = require "lsp.common"
 
 local function rust_on_attach(client, bufnr)
-    print "hello rust"
+    -- print "hello rust"
     local f, _ = io.open("./ra-config.json", "r")
 
     if f then

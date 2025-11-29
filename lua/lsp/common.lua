@@ -37,6 +37,14 @@ local on_attach = function(client, bufnr)
                     }
                 })
             end)
+        :add_entry("DiagnosticNextError", "N", "DiagnosticNextError",
+            function()
+                vim.diagnostic.goto_next({
+                    severity = {
+                        min = vim.diagnostic.severity.ERROR
+                    }
+                })
+            end)
         :add_entry("DiagnosticPrev", "p", "DiagnosticPrev",
             function()
                 vim.diagnostic.goto_prev({
