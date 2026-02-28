@@ -205,6 +205,15 @@ return {
         }
     },
     ai = {
+        {
+            "NickvanDyke/opencode.nvim",
+            requires = {
+                "folke/snacks.nvim",
+            },
+            config = function()
+                require("opencode").setup()
+            end
+        }
         -- {
         --     "coder/claudecode.nvim",
         --     requires = {
