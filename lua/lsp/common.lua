@@ -53,6 +53,14 @@ local on_attach = function(client, bufnr)
                     }
                 })
             end)
+        :add_entry("DiagnosticPrev", "wn", "Workspace DiagnosticNext",
+            function()
+                require("trouble").next({ mode = "diagnostics", skip_groups = true, jump = true })
+            end)
+        :add_entry("DiagnosticPrev", "wp", "Workspace DiagnosticPrev",
+            function()
+                require("trouble").previous({ mode = "diagnostics", skip_groups = true, jump = true })
+            end)
         :add_entry("Hover", "h", "Hover", vim.lsp.buf.hover)
         :add_entry("Format", "f", "Format", vim.lsp.buf.format)
         :add_entry("Signature", "s", "Signature", vim.lsp.buf.signature_help)
