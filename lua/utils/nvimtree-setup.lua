@@ -141,6 +141,7 @@ return function()
         on_attach = on_attach,
         sort_by = "case_sensitive",
         view = {
+            relativenumber = true,
             width = 40,
             float = {
                 enable = true,
@@ -176,7 +177,7 @@ return function()
         },
     }
 
-    require("nvim-tree.view").View.winopts.relativenumber = true
+    -- require("nvim-tree.view").View.winopts.relativenumber = true
 
     local keymap_grp = require "mykeymaps.group"
 
