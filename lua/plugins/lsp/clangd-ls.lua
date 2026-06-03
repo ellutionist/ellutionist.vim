@@ -1,4 +1,4 @@
-local common = require "lsp.common"
+local common = require "plugins.lsp.common"
 -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

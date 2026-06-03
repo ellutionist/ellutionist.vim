@@ -1,11 +1,11 @@
 return function()
-    local common = require "lsp.common"
-    require "lsp.lua-ls"
-    require "lsp.clangd-ls"
-    require "lsp.json-ls"
-    require "lsp.pyright-lsp"
-    require "lsp.rust"
-    require "lsp.gopls-init"
+    local common = require "plugins.lsp.common"
+    require "plugins.lsp.lua-ls"
+    require "plugins.lsp.clangd-ls"
+    require "plugins.lsp.json-ls"
+    require "plugins.lsp.pyright-lsp"
+    require "plugins.lsp.rust"
+    require "plugins.lsp.gopls-init"
 
     local servers = {
         "luau_lsp",

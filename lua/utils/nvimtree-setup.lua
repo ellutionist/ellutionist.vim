@@ -179,7 +179,7 @@ return function()
 
     -- require("nvim-tree.view").View.winopts.relativenumber = true
 
-    local keymap_grp = require "mykeymaps.group"
+    local keymap_grp = require "core.keymaps.group"
 
     keymap_grp.new("FileExplorer", "t")
         :add_entry("Open", "o", "Open Explorer", "NvimTreeOpen")

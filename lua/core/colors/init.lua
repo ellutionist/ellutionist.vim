@@ -40,7 +40,7 @@ local function color_random()
     vim.cmd("colorscheme " .. choose)
 end
 
-require "mykeymaps.group".new_or_get("Color", "c")
+require "core.keymaps.group".new_or_get("Color", "c")
     :add_entry("ToggleBackground", "b", "Toggle background", "let &bg=(&bg=='light'?'dark':'light')")
     :add_entry("Random", "r", "Random color", color_random)
     :bind()

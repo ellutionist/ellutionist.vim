@@ -1,7 +1,7 @@
 return function()
     local null_ls = require "null-ls"
 
-    local common = require "lsp.common"
+    local common = require "plugins.lsp.common"
 
     null_ls.setup {
         on_attach = common.on_attach,

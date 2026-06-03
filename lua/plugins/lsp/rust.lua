@@ -1,5 +1,5 @@
 -- local rt = require("rust-tools")
-local common = require "lsp.common"
+local common = require "plugins.lsp.common"
 
 local function rust_on_attach(client, bufnr)
     -- print "hello rust"

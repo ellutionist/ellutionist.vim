@@ -16,6 +16,7 @@ return function()
         startify.button("T", "Telescope", ":Telescope<CR>"),
         startify.button("n", "New", ":enew<CR>"),
         startify.button("s", "Search Files", ":Telescope find_files<CR>"),
+        startify.button("L", "Lazy", ":Lazy<CR>"),
         startify.button("m", "Mason Installer", ":Mason<CR>"),
     }
     -- disable MRU

@@ -149,7 +149,7 @@ return function()
                 vim.keymap.set(mode, l, r, opts)
             end
 
-            local keymap_grp = require "mykeymaps.group"
+            local keymap_grp = require "core.keymaps.group"
 
             keymap_grp.new("GitSigns", "g")
                 :add_entry("NextHunk", "n", "Go to the next hunk", gs.next_hunk)

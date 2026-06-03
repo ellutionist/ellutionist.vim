@@ -58,7 +58,7 @@ return function()
         -- other configuration values here
     })
 
-    local keymap_grp = require "mykeymaps.group"
+    local keymap_grp = require "core.keymaps.group"
 
     local function telescope_error_diagnostics()
         require("telescope.builtin").diagnostics({

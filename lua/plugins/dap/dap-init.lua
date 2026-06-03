@@ -15,7 +15,7 @@ end
 
 setup_signs()
 
-local keymap_grp = require "mykeymaps.group"
+local keymap_grp = require "core.keymaps.group"
 local dap = require "dap"
 
 dap.set_log_level("DEBUG")

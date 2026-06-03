@@ -9,8 +9,8 @@
 local _M = {}
 
 local utils = require "utils"
-local bind = require "mykeymaps.bind".leader_and_space
-local bind_visual = require "mykeymaps.bind".leader_and_space_visual
+local bind = require "core.keymaps.bind".leader_and_space
+local bind_visual = require "core.keymaps.bind".leader_and_space_visual
 
 function _M.new(leader_key, name, keys, alternatives, description, action, mode)
     local self = setmetatable({}, { __index = _M })

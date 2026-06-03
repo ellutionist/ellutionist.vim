@@ -1,5 +1,5 @@
 return function()
-    require "mykeymaps.group".new_or_get(
+    require "core.keymaps.group".new_or_get(
         "test", "e"
     )
         :add_entry("Nearest", "n", "Test Nearest", "TestNearest")

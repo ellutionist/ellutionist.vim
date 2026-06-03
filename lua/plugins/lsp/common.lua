@@ -8,10 +8,10 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "rn", vim.lsp.buf.rename)
 
 
-    -- require "lsp.inlay-hint".on_attach(client, bufnr)
-    -- require "lsp.signature".on_attach(client, bufnr)
+    -- require "plugins.lsp.inlay-hint".on_attach(client, bufnr)
+    -- require "plugins.lsp.signature".on_attach(client, bufnr)
 
-    local keymap_grp = require "mykeymaps.group"
+    local keymap_grp = require "core.keymaps.group"
     local grp = keymap_grp.new_or_get("LanguageServer", "l")
         :add_entry("Diagnostics", "d", "Toggle Diagnostics",
             "Trouble diagnostics toggle")

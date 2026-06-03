@@ -9,9 +9,8 @@ local _M = {}
 
 
 local utils = require "utils"
-local bind = require "mykeymaps.bind".leader_and_space
-local entry = require "mykeymaps.entry"
-local display = require "myui.mywindow".split_and_display
+local bind = require "core.keymaps.bind".leader_and_space
+local entry = require "core.keymaps.entry"
 local wk = require "which-key"
 
 local groups = {}
@@ -21,6 +20,19 @@ function _M.wrap_cmd(cmd)
     return function()
         vim.cmd(cmd)
     end
+end
+
+local function display(lines)
+    vim.api.nvim_command("split")
+
+    local new_bufnr = vim.api.nvim_create_buf(false, true)
+    -- vim.api.nvim_buf_set_name(new_bufnr, "/tmp/help.txt")
+    vim.api.nvim_set_current_buf(new_bufnr)
+
+    vim.api.nvim_buf_set_lines(new_bufnr, 0, -1, true, lines)
+    vim.bo[new_bufnr].modifiable = false
+    vim.bo[new_bufnr].filetype = "help"
+    vim.api.nvim_buf_set_keymap(new_bufnr, "n", "q", ":q<CR>", { noremap = true, silent = true })
 end
 
 local function new_group(name, leader_key)

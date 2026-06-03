@@ -98,7 +98,7 @@ return function()
         -- no_name_title = nil,
     }
 
-    local keymap_grp = require "mykeymaps.group"
+    local keymap_grp = require "core.keymaps.group"
 
     keymap_grp.new("Buffer", "b")
         :add_entry("ViewAllBuffers", "v", "View all buffers", "Telescope buffers")

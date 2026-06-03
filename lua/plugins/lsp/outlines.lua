@@ -20,7 +20,7 @@ return function()
 
     }
 
-    require "mykeymaps.group".new_or_get("Symbols", "S")
+    require "core.keymaps.group".new_or_get("Symbols", "S")
         :add_entry("Toggle", "S", "Toggle symbols outline", "SymbolsOutline")
         :add_entry("Open", "o", "Open symbols outline", "SymbolsOutlineOpen")
         :add_entry("Close", "c", "Close symbols outline", "SymbolsOutlineClose")
