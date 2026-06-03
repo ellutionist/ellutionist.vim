@@ -23,6 +23,9 @@ require("lazy").setup("plugins", {
   change_detection = {
     notify = false,
   },
+  checker = {
+    enabled = false,
+  },
 })
 
 vim.api.nvim_create_autocmd("User", {
