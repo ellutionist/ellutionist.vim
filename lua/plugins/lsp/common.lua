@@ -1,6 +1,9 @@
-local progress_buf, progress_win, progress_timer
+local progress_buf, progress_win, progress_timer, ready_shown
 
 local function show_progress(msg)
+  if ready_shown then
+    return
+  end
   if progress_timer then
     vim.uv.timer_stop(progress_timer)
   end
@@ -23,6 +26,7 @@ local function show_progress(msg)
 end
 
 local function hide_progress()
+  ready_shown = false
   if progress_win and vim.api.nvim_win_is_valid(progress_win) then
     vim.api.nvim_win_close(progress_win, true)
     progress_win = nil
@@ -35,7 +39,26 @@ local function hide_progress()
 end
 
 local function show_ready(name)
-  show_progress(name .. " ready")
+  ready_shown = true
+  if progress_timer then
+    vim.uv.timer_stop(progress_timer)
+  end
+  if progress_win and vim.api.nvim_win_is_valid(progress_win) then
+    vim.api.nvim_buf_set_lines(progress_buf, 0, -1, false, { name .. " ready" })
+  else
+    progress_buf = vim.api.nvim_create_buf(false, true)
+    vim.api.nvim_buf_set_lines(progress_buf, 0, -1, false, { name .. " ready" })
+    progress_win = vim.api.nvim_open_win(progress_buf, false, {
+      relative = "editor",
+      width = 60,
+      height = 1,
+      row = vim.o.lines - 2,
+      col = vim.o.columns - 62,
+      style = "minimal",
+      border = "rounded",
+    })
+    vim.api.nvim_win_set_option(progress_win, "winhighlight", "Normal:Normal")
+  end
   progress_timer = vim.uv.new_timer()
   progress_timer:start(2000, 0, vim.schedule_wrap(function()
     hide_progress()
