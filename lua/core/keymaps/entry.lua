@@ -8,7 +8,7 @@
 ---@field public mode string?
 local _M = {}
 
-local utils = require "utils"
+local utils = require "core.utils"
 local bind = require "core.keymaps.bind".leader_and_space
 local bind_visual = require "core.keymaps.bind".leader_and_space_visual
 

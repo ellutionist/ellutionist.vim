@@ -1,17 +1,17 @@
 return {
   {
     "preservim/nerdcommenter",
-    config = require "utils.nerdcommenter-setup",
+    config = require "plugins.editor.nerdcommenter",
     event = "VeryLazy",
   },
   {
     "folke/flash.nvim",
-    config = require "utils.flash-setup",
+    config = require "plugins.editor.flash",
     event = "VeryLazy",
   },
   {
     "voldikss/vim-floaterm",
-    config = require "utils.floaterm-setup",
+    config = require "plugins.editor.floaterm",
     keys = {
       { "<leader>f", desc = "Terminal" },
     },

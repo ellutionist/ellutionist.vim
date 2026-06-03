@@ -8,7 +8,7 @@
 local _M = {}
 
 
-local utils = require "utils"
+local utils = require "core.utils"
 local bind = require "core.keymaps.bind".leader_and_space
 local entry = require "core.keymaps.entry"
 local wk = require "which-key"

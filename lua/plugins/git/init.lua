@@ -1,12 +1,12 @@
 return {
   {
     "tpope/vim-fugitive",
-    config = require "utils.git-fugitive-setup",
+    config = require "plugins.git.fugitive",
     cmd = { "Git", "G", "Gvdiffsplit", "Gdiffsplit" },
   },
   {
     "lewis6991/gitsigns.nvim",
-    config = require "utils.gitsigns-setup",
+    config = require "plugins.git.gitsigns",
     event = "VeryLazy",
   },
   {

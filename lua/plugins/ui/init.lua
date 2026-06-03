@@ -5,13 +5,13 @@ return {
   },
   {
     "nvim-lualine/lualine.nvim",
-    config = require "utils.lualine-setup",
+    config = require "plugins.ui.lualine",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     event = "VeryLazy",
   },
   {
     "romgrk/barbar.nvim",
-    config = require "utils.bufferline-setup",
+    config = require "plugins.ui.bufferline",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
       "lewis6991/gitsigns.nvim",
@@ -20,19 +20,19 @@ return {
   },
   {
     "nvim-tree/nvim-tree.lua",
-    config = require "utils.nvimtree-setup",
+    config = require "plugins.ui.nvimtree",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     lazy = false,
   },
   {
     "goolord/alpha-nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = require "utils.dashboard-setup",
+    config = require "plugins.ui.dashboard",
     lazy = false,
   },
   {
     "RRethy/vim-illuminate",
-    config = require "utils.illuminate-setup",
+    config = require "plugins.ui.illuminate",
     event = "VeryLazy",
   },
 }
