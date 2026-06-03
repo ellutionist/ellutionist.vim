@@ -18,6 +18,7 @@ return function()
         "ruff",
         "taplo",
         "bashls",
+        "dartls",
     }
 
     for _, server in ipairs(servers) do
