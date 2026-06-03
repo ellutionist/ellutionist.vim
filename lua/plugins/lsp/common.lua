@@ -1,5 +1,61 @@
+local progress_buf, progress_win, progress_timer
+
+local function show_progress(msg)
+  if progress_timer then
+    vim.uv.timer_stop(progress_timer)
+  end
+  if progress_win and vim.api.nvim_win_is_valid(progress_win) then
+    vim.api.nvim_buf_set_lines(progress_buf, 0, -1, false, { msg })
+  else
+    progress_buf = vim.api.nvim_create_buf(false, true)
+    vim.api.nvim_buf_set_lines(progress_buf, 0, -1, false, { msg })
+    progress_win = vim.api.nvim_open_win(progress_buf, false, {
+      relative = "editor",
+      width = 60,
+      height = 1,
+      row = vim.o.lines - 2,
+      col = vim.o.columns - 62,
+      style = "minimal",
+      border = "rounded",
+    })
+    vim.api.nvim_win_set_option(progress_win, "winhighlight", "Normal:Normal")
+  end
+end
+
+local function hide_progress()
+  if progress_win and vim.api.nvim_win_is_valid(progress_win) then
+    vim.api.nvim_win_close(progress_win, true)
+    progress_win = nil
+    progress_buf = nil
+  end
+  if progress_timer then
+    vim.uv.timer_stop(progress_timer)
+    progress_timer = nil
+  end
+end
+
+local function show_ready(name)
+  show_progress(name .. " ready")
+  progress_timer = vim.uv.new_timer()
+  progress_timer:start(2000, 0, vim.schedule_wrap(function()
+    hide_progress()
+  end))
+end
+
+vim.lsp.handlers["$/progress"] = function(_, result, ctx)
+  if result.value and result.value.kind then
+    if result.value.kind == "end" then
+      show_ready(ctx.client_id and vim.lsp.get_client_by_id(ctx.client_id).name or "LSP")
+    elseif result.value.message then
+      show_progress(result.value.kind .. ": " .. result.value.message)
+    else
+      show_progress(result.value.kind)
+    end
+  end
+end
+
 local on_attach = function(client, bufnr)
-    vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
     vim.keymap.set("n", "gr", "<cmd>Trouble lsp_references focus=true<cr>")
     vim.keymap.set("n", "gd", "<cmd>Trouble lsp_definitions focus=true<cr>")
