@@ -84,9 +84,43 @@ local on_attach = function(client, bufnr)
 
     vim.keymap.set("n", "gr", "<cmd>Trouble lsp_references focus=true<cr>")
     vim.keymap.set("n", "gd", "<cmd>Trouble lsp_definitions focus=true<cr>")
-    -- vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<cr>")
-    -- vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>")
     vim.keymap.set("n", "rn", vim.lsp.buf.rename)
+
+    local function file_references()
+      local bufnr = vim.api.nvim_get_current_buf()
+      local fname = vim.api.nvim_buf_get_name(bufnr)
+      local clients = vim.lsp.get_clients({ bufnr = bufnr })
+      for _, client in ipairs(clients) do
+        if client.supports_method('textDocument/references') then
+          local params = vim.lsp.util.make_position_params(0, client.offset_encoding)
+          client.request('textDocument/references', params, function(err, result)
+            if err or not result or vim.tbl_isempty(result) then return end
+            local items = {}
+            for _, loc in ipairs(result) do
+              if loc.uri and vim.uri_to_fname(loc.uri) == fname then
+                local lnum = loc.range.start.line + 1
+                local text = (vim.api.nvim_buf_get_lines(bufnr, lnum - 1, lnum, false)[1] or ''):gsub('^%s+', '')
+                table.insert(items, {
+                  filename = fname,
+                  lnum = lnum,
+                  col = loc.range.start.character + 1,
+                  text = text,
+                })
+              end
+            end
+            if #items == 0 then
+              vim.notify('No references found in current file', vim.log.levels.INFO)
+              return
+            end
+            vim.fn.setqflist({}, 'r', { title = 'Ref: ' .. vim.fn.fnamemodify(fname, ':t'), items = items })
+            vim.cmd('copen')
+          end)
+          return
+        end
+      end
+      vim.notify('No LSP client supports references', vim.log.levels.WARN)
+    end
+    vim.keymap.set("n", "gF", file_references, { desc = "References in file" })
 
 
     -- require "plugins.lsp.inlay-hint".on_attach(client, bufnr)
@@ -100,6 +134,8 @@ local on_attach = function(client, bufnr)
             "Trouble symbols focus=true")
         :add_entry("References", "r", "Go to references",
             "Trouble lsp_references focus=true", { "gr" })
+        :add_entry("References in file", "F", "References in current file",
+            file_references, { "gF" })
         :add_entry("References", "tr", "toggle lsp references",
             "Trouble lsp_references toggle", { "gr" })
         :add_entry("IncomingCalls", "I", "Incoming calls",
