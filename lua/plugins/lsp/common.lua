@@ -20,6 +20,7 @@ local function show_progress(msg)
       col = vim.o.columns - 62,
       style = "minimal",
       border = "rounded",
+      focusable = false,
     })
     vim.api.nvim_win_set_option(progress_win, "winhighlight", "Normal:Normal")
   end
@@ -56,6 +57,7 @@ local function show_ready(name)
       col = vim.o.columns - 62,
       style = "minimal",
       border = "rounded",
+      focusable = false,
     })
     vim.api.nvim_win_set_option(progress_win, "winhighlight", "Normal:Normal")
   end
