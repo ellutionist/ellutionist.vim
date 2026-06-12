@@ -89,36 +89,59 @@ local on_attach = function(client, bufnr)
     local function file_references()
       local bufnr = vim.api.nvim_get_current_buf()
       local fname = vim.api.nvim_buf_get_name(bufnr)
-      local clients = vim.lsp.get_clients({ bufnr = bufnr })
-      for _, client in ipairs(clients) do
-        if client.supports_method('textDocument/references') then
-          local params = vim.lsp.util.make_position_params(0, client.offset_encoding)
-          client.request('textDocument/references', params, function(err, result)
-            if err or not result or vim.tbl_isempty(result) then return end
-            local items = {}
-            for _, loc in ipairs(result) do
-              if loc.uri and vim.uri_to_fname(loc.uri) == fname then
-                local lnum = loc.range.start.line + 1
-                local text = (vim.api.nvim_buf_get_lines(bufnr, lnum - 1, lnum, false)[1] or ''):gsub('^%s+', '')
+      local params = vim.lsp.util.make_position_params(0)
+      params.context = { includeDeclaration = true }
+      vim.lsp.buf_request_all(bufnr, 'textDocument/references', params, function(response)
+        if not response or vim.tbl_isempty(response) then
+          vim.notify('No references found', vim.log.levels.INFO)
+          return
+        end
+        local items = {}
+        for _, result in pairs(response) do
+          if result.result and not vim.tbl_isempty(result.result) then
+            for _, loc in ipairs(result.result) do
+              local uri = loc.uri or loc.targetUri
+              local range = loc.range or loc.targetRange
+              if uri and range and vim.uri_to_fname(uri) == fname then
+                local lnum = range.start.line + 1
+                local text = vim.trim(vim.api.nvim_buf_get_lines(bufnr, lnum - 1, lnum, false)[1] or '')
                 table.insert(items, {
                   filename = fname,
                   lnum = lnum,
-                  col = loc.range.start.character + 1,
+                  col = range.start.character + 1,
                   text = text,
                 })
               end
             end
-            if #items == 0 then
-              vim.notify('No references found in current file', vim.log.levels.INFO)
-              return
-            end
-            vim.fn.setqflist({}, 'r', { title = 'Ref: ' .. vim.fn.fnamemodify(fname, ':t'), items = items })
-            vim.cmd('copen')
-          end)
+          end
+        end
+        if #items == 0 then
+          vim.notify('No references found in current file', vim.log.levels.INFO)
           return
         end
-      end
-      vim.notify('No LSP client supports references', vim.log.levels.WARN)
+        vim.fn.setqflist({}, 'r', { title = 'Ref: ' .. vim.fn.fnamemodify(fname, ':t'), items = items })
+        vim.cmd('copen')
+        local qf_win = vim.fn.getqflist({ winid = 1 }).winid
+        if qf_win and qf_win > 0 then
+          local qf_buf = vim.api.nvim_win_get_buf(qf_win)
+          vim.api.nvim_set_current_win(qf_win)
+          vim.keymap.set('n', 'q', '<cmd>cclose<cr>', { buffer = true, nowait = true })
+          vim.api.nvim_create_autocmd('CursorMoved', {
+            buffer = qf_buf,
+            callback = function()
+              local idx = vim.fn.line('.')
+              local items = vim.fn.getqflist({ idx = idx, items = 0 })
+              if items and #items > 0 then
+                local item = items[1]
+                local target_win = vim.fn.bufwinid(item.bufnr)
+                if target_win > 0 then
+                  vim.api.nvim_win_set_cursor(target_win, { item.lnum, item.col - 1 })
+                end
+              end
+            end,
+          })
+        end
+      end)
     end
     vim.keymap.set("n", "gF", file_references, { desc = "References in file" })
 
