@@ -21,7 +21,7 @@ require("lazy").setup("plugins", {
     colorscheme = { "gruvbox" },
   },
   change_detection = {
-    notify = false,
+    enabled = false,
   },
   checker = {
     enabled = false,
