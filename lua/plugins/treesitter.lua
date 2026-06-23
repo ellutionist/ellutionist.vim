@@ -41,6 +41,8 @@ return {
 
             vim.opt.foldmethod = "expr"
             vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+            vim.opt.foldlevel = 99
+            vim.opt.foldminlines = 3
         end,
         -- 绑定快捷键打开 TUI 管理界面
         keys = {
