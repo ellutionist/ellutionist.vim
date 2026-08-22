@@ -1,11 +1,5 @@
 return {
     {
-        "L3MON4D3/LuaSnip",
-        config = function()
-            require("luasnip").setup()
-        end,
-    },
-    {
         "hrsh7th/nvim-cmp",
         config = require "plugins.lsp.complete",
         dependencies = {
